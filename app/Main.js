@@ -5,7 +5,7 @@ function ExampleComponent() {
   return (
     <div>
       <h1>This is our app!</h1>
-      <p>The sky is blue</p>
+      <p>The sky is blue!!!!</p>
     </div>
   );
 }

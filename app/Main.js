@@ -10,6 +10,8 @@ function ExampleComponent() {
   );
 }
 
+//Let's start building our first app
+
 ReactDOM.render(<ExampleComponent />, document.querySelector("#app"));
 
 if (module.hot) {

@@ -17,6 +17,7 @@ function ExampleComponent() {
 }
 
 //Let's start building our first app
+//Routing (Single Page Applications)
 
 ReactDOM.render(<ExampleComponent />, document.querySelector("#app"));
 

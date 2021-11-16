@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Terms from "./components/Terms";
 
-function ExampleComponent() {
+function Main() {
   return (
     <>
       <Header />
@@ -21,7 +21,7 @@ function ExampleComponent() {
 //Let's start building our first app
 //Routing (Single Page Applications)
 
-ReactDOM.render(<ExampleComponent />, document.querySelector("#app"));
+ReactDOM.render(<Main />, document.querySelector("#app"));
 
 if (module.hot) {
   module.hot.accept();

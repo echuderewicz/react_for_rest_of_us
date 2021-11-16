@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 //import components
 import Header from "./components/Header";
@@ -12,7 +13,7 @@ function Main() {
   return (
     <>
       <Header />
-      <About />
+      <Terms />
       <Footer />
     </>
   );

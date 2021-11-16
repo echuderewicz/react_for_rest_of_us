@@ -11,11 +11,21 @@ import Terms from "./components/Terms";
 
 function Main() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <Terms />
+      <Switch>
+        <Route path="/" exact>
+          <HomeGuest />
+        </Route>
+        <Route path="/about-us">
+          <About />
+        </Route>
+        <Route path="/terms">
+          <Terms />
+        </Route>
+      </Switch>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

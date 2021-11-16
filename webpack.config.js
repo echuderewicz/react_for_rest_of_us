@@ -13,7 +13,7 @@ module.exports = {
     port: 3000,
     contentBase: path.join(__dirname, "app"),
     hot: true,
-    historyApiFallback: { index: "index.html" },
+    historyApiFallback: { index: "index.html" }, //this is important for allowing an address to be added directly into browser
   },
   module: {
     rules: [

@@ -1,14 +1,9 @@
 import React, { useEffect } from "react";
-import Container from "./Container";
+import Page from "./Page";
 
 function About() {
-  //only run this the first time the component is rendered
-  useEffect(() => {
-    document.title = "About Us | ComplexApp ";
-    window.scrollTo(0, 0);
-  }, []);
   return (
-    <Container>
+    <Page title="About Us">
       <h2>About Us</h2>
       <p className="lead text-muted">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
@@ -30,7 +25,7 @@ function About() {
         nobis provident quo dolorum sapiente temporibus facere non repellendus
         consequatur cupiditate!
       </p>
-    </Container>
+    </Page>
   );
 }
 

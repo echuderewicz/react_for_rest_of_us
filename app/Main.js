@@ -32,6 +32,7 @@ function Main() {
 //Let's start building our first app
 //Routing (Single Page Applications)
 //20. Create a Reusable "Container" Component
+//21. Quick Details & Composition
 
 ReactDOM.render(<Main />, document.querySelector("#app"));
 

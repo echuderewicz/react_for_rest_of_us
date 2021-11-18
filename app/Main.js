@@ -33,6 +33,7 @@ function Main() {
 //Routing (Single Page Applications)
 //20. Create a Reusable "Container" Component
 //21. Quick Details & Composition
+//29. Sending a Request From the Front-End
 
 ReactDOM.render(<Main />, document.querySelector("#app"));
 

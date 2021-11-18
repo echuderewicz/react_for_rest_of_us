@@ -34,6 +34,7 @@ function Main() {
 //20. Create a Reusable "Container" Component
 //21. Quick Details & Composition
 //29. Sending a Request From the Front-End
+//30. Access Form Field Values with React
 
 ReactDOM.render(<Main />, document.querySelector("#app"));
 

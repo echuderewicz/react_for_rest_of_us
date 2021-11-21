@@ -35,6 +35,7 @@ function Main() {
 //21. Quick Details & Composition
 //29. Sending a Request From the Front-End
 //30. Access Form Field Values with React
+//32. Render Different Components Depending on State
 
 ReactDOM.render(<Main />, document.querySelector("#app"));
 

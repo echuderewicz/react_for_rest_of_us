@@ -14,7 +14,7 @@ function Header() {
           </Link>
         </h4>
         {loggedIn ? (
-          <HeaderLoggedIn />
+          <HeaderLoggedIn setLoggedIn={setLoggedIn} />
         ) : (
           <HeaderLoggedOut setLoggedIn={setLoggedIn} />
         )}

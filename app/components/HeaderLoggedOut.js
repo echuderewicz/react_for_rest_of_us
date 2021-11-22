@@ -13,6 +13,8 @@ function HeaderLoggedOut(props) {
         password,
       });
 
+      //note the distinction, setLoggedIn set to TRUE here after a 'submit' event
+
       if (response.data) {
         console.log(response.data);
         props.setLoggedIn(true);

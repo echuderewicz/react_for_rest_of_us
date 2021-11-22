@@ -20,6 +20,7 @@ function HeaderLoggedIn(props) {
         Create Post
       </a>
       <button
+        //note the distinction, setLoggedIn set to FALSE here after a 'click' event
         onClick={() => props.setLoggedIn(false)}
         className="btn btn-sm btn-secondary"
       >

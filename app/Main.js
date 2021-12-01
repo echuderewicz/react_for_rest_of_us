@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -11,9 +11,14 @@ import Terms from "./components/Terms";
 import Home from "./components/Home";
 
 function Main() {
+  const [loggedIn, setLoggedIn] = useState(
+    //basically the code below evaluates to true or false depending on whether
+    //the item in local storage is present or not
+    Boolean(localStorage.getItem("complexappToken"))
+  );
   return (
     <BrowserRouter>
-      <Header />
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route path="/" exact>
           <Home />

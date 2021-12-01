@@ -16,7 +16,11 @@ function HeaderLoggedOut(props) {
       //note the distinction, setLoggedIn set to TRUE here after a 'submit' event
 
       if (response.data) {
+        //logging just as a test
         console.log(response.data);
+        localStorage.setItem("complexappToken", response.data.token);
+        localStorage.setItem("complexappUsername", response.data.username);
+        localStorage.setItem("complexappAvatar", response.data.avatar);
         props.setLoggedIn(true);
       } else {
         console.log("improper username/password");

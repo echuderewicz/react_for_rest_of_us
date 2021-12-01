@@ -20,7 +20,8 @@ function HeaderLoggedIn(props) {
       <a href="#" className="mr-2">
         <img
           className="small-header-avatar"
-          src="https://gravatar.com/avatar/b9408a09298632b5151200f3449434ef?s=128"
+          //local storage contains an encrypted link to an avatar photo associated with your email address of echuderewicz@gmail.com
+          src={localStorage.getItem("complexappAvatar")}
         />
       </a>
       <a className="btn btn-sm btn-success mr-2" href="/create-post">

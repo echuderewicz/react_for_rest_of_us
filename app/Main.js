@@ -21,7 +21,7 @@ function Main() {
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route path="/" exact>
-          <Home />
+          {loggedIn ? <Home /> : <HomeGuest />}
         </Route>
         <Route path="/about-us">
           <About />

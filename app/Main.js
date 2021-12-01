@@ -8,6 +8,7 @@ import HomeGuest from "./components/HomeGuest";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Terms from "./components/Terms";
+import Home from "./components/Home";
 
 function Main() {
   return (
@@ -15,7 +16,7 @@ function Main() {
       <Header />
       <Switch>
         <Route path="/" exact>
-          <HomeGuest />
+          <Home />
         </Route>
         <Route path="/about-us">
           <About />

@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 
 function HeaderLoggedIn(props) {
+  function handleLogout() {
+    props.setLoggedIn(false);
+    //remove items from local storage
+    localStorage.removeItem("complexappToken");
+    localStorage.removeItem("complexappUsername");
+    localStorage.removeItem("complexappAvatar");
+  }
   return (
     <div className="flex-row my-3 my-md-0">
       <a href="#" className="text-white mr-2 header-search-icon">
@@ -21,7 +28,7 @@ function HeaderLoggedIn(props) {
       </a>
       <button
         //note the distinction, setLoggedIn set to FALSE here after a 'click' event
-        onClick={() => props.setLoggedIn(false)}
+        onClick={handleLogout}
         className="btn btn-sm btn-secondary"
       >
         Sign Out

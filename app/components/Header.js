@@ -4,7 +4,11 @@ import HeaderLoggedOut from "./HeaderLoggedOut";
 import HeaderLoggedIn from "./HeaderLoggedIn";
 
 function Header() {
-  const [loggedIn, setLoggedIn] = useState();
+  const [loggedIn, setLoggedIn] = useState(
+    //basically the code below evaluates to true or false depending on whether
+    //the item in local storage is present or not
+    Boolean(localStorage.getItem("complexappToken"))
+  );
   return (
     <header className="header-bar bg-primary mb-3">
       <div className="container d-flex flex-column flex-md-row align-items-center p-3">

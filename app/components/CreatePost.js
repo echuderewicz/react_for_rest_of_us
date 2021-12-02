@@ -1,10 +1,26 @@
 import React, { useEffect } from "react";
 import Page from "./Page";
+import Axios from "axios";
 
 function CreatePost() {
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const response = await Axios.post("/create-post", {
+        title: "I'm the man",
+        body: "your a women",
+        token: localStorage.getItem("complexappToken"),
+      });
+
+      console.log("you submitted a post");
+    } catch (e) {
+      console.log("somethnig happened while trying to submit a post");
+    }
+  }
   return (
     <Page title="Create New Post">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="post-title" className="text-muted mb-1">
             <small>Title</small>

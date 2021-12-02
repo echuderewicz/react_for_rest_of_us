@@ -10,7 +10,7 @@ function HomeGuest() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await Axios.post("http://localhost:8080/register", {
+      const response = await Axios.post("/register", {
         username,
         email,
         password,

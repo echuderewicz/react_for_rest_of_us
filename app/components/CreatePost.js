@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Page from "./Page";
 import Axios from "axios";
 
 function CreatePost() {
+  const [title, setTitle] = useState();
+  const [body, setBody] = useState();
+
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
       const response = await Axios.post("/create-post", {
-        title: "I'm the man",
-        body: "your a women",
+        title,
+        body,
         token: localStorage.getItem("complexappToken"),
       });
 
@@ -26,6 +29,7 @@ function CreatePost() {
             <small>Title</small>
           </label>
           <input
+            onChange={(e) => setTitle(e.target.value)}
             autoFocus
             name="title"
             id="post-title"
@@ -41,6 +45,7 @@ function CreatePost() {
             <small>Body Content</small>
           </label>
           <textarea
+            onChange={(e) => setBody(e.target.value)}
             name="body"
             id="post-body"
             className="body-content tall-textarea form-control"

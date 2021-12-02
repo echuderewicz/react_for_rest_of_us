@@ -16,12 +16,14 @@ function CreatePost(props) {
         body,
         token: localStorage.getItem("complexappToken"),
       });
+
+      props.addFlashMessage("Congrats, you successlly created a post");
       //Redirect to new post url
       props.history.push(`/post/${response.data}`);
 
       console.log("you submitted a post");
     } catch (e) {
-      console.log("somethnig happened while trying to submit a post");
+      console.log("something happened while trying to submit a post");
     }
   }
   return (

@@ -21,16 +21,25 @@ function Main() {
     //the item in local storage is present or not
     Boolean(localStorage.getItem("complexappToken"))
   );
+  const [flashMessages, setFlashMessages] = useState([]);
+
+  //this function below is a wrapper that allows a message to be passed
+  //which then will get concatenated onto the previous set of messages
+
+  function addFlashMessage(msg) {
+    setFlashMessages((prev) => prev.concat(msg));
+  }
+
   return (
     <BrowserRouter>
-      <FlashMessages />
+      <FlashMessages messages={flashMessages} />
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route path="/" exact>
           {loggedIn ? <Home /> : <HomeGuest />}
         </Route>
         <Route path="/create-post">
-          <CreatePost />
+          <CreatePost addFlashMessage={addFlashMessage} />
         </Route>
         <Route path="/post/:id">
           <ViewSinglePost />

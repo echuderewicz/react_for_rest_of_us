@@ -12,6 +12,7 @@ import About from "./components/About";
 import Terms from "./components/Terms";
 import Home from "./components/Home";
 import CreatePost from "./components/CreatePost";
+import ViewSinglePost from "./components/ViewSinglePost";
 
 function Main() {
   const [loggedIn, setLoggedIn] = useState(
@@ -28,6 +29,9 @@ function Main() {
         </Route>
         <Route path="/create-post">
           <CreatePost />
+        </Route>
+        <Route path="/post/:id">
+          <ViewSinglePost />
         </Route>
         <Route path="/about-us">
           <About />

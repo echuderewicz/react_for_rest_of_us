@@ -17,7 +17,9 @@ function HomeGuest() {
       });
       console.log(`${response.data.username} was successfully created`);
     } catch (e) {
-      console.log("there was an error11");
+      console.log(
+        "there was an error...you might not have entered in a long enough password"
+      );
     }
   }
   return (

@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import StateContext from "../StateContext";
 
 function FlashMessages(props) {
+  const appState = useContext(StateContext);
   return (
     <div className="floating-alerts">
-      {props.messages.map((msg, index) => {
+      {appState.flashMessages.map((msg, index) => {
         return (
           <div
             key={index}

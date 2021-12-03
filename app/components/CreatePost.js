@@ -2,13 +2,13 @@ import React, { useEffect, useState, useContext } from "react";
 import Page from "./Page";
 import Axios from "axios";
 import { withRouter } from "react-router-dom";
-import ExampleContext from "../ExampleContext";
+import DispatchContext from "../DispatchContext";
 
 function CreatePost(props) {
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
   //in this case there is only one object on value in Main.js
-  const { addFlashMessage } = useContext(ExampleContext);
+  const appDispatch = useContext(DispatchContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -20,7 +20,7 @@ function CreatePost(props) {
         token: localStorage.getItem("complexappToken"),
       });
 
-      addFlashMessage("Congrats, you successfully created a post yet again");
+      appDispatch({ type: "flashmessage", value: "have a nice day" });
 
       //Redirect to new post url
       props.history.push(`/post/${response.data}`);

@@ -35,22 +35,22 @@ function Main() {
         };
     }
   }
-  const [state, dispatch] = useReducer(ourReducer, initialState);
+  // const [state, dispatch] = useReducer(ourReducer, initialState);
 
-  const [loggedIn, setLoggedIn] = useState(
-    //basically the code below evaluates to true or false depending on whether
-    //the item in local storage is present or not
-    Boolean(localStorage.getItem("complexappToken"))
-  );
-  const [flashMessages, setFlashMessages] = useState([]);
+  // const [loggedIn, setLoggedIn] = useState(
+  //   //basically the code below evaluates to true or false depending on whether
+  //   //the item in local storage is present or not
+  //   Boolean(localStorage.getItem("complexappToken"))
+  // );
+  // const [flashMessages, setFlashMessages] = useState([]);
 
   //this function below is a wrapper that allows a message to be passed
   //which then will get concatenated onto the previous set of messages
 
-  function addFlashMessage(msg) {
-    setFlashMessages((prev) => prev.concat(msg));
-    //console.log(flashMessages);
-  }
+  // function addFlashMessage(msg) {
+  //   setFlashMessages((prev) => prev.concat(msg));
+  //   //console.log(flashMessages);
+  // }
 
   return (
     <ExampleContext.Provider value={{ addFlashMessage, setLoggedIn, loggedIn }}>

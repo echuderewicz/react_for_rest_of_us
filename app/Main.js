@@ -33,10 +33,10 @@ function Main() {
   }
 
   return (
-    <ExampleContext.Provider value={addFlashMessage}>
+    <ExampleContext.Provider value={{ addFlashMessage, setLoggedIn, loggedIn }}>
       <BrowserRouter>
         <FlashMessages messages={flashMessages} />
-        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        <Header />
         <Switch>
           <Route path="/" exact>
             {loggedIn ? <Home /> : <HomeGuest />}

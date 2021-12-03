@@ -8,7 +8,7 @@ function CreatePost(props) {
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
   //in this case there is only one object on value in Main.js
-  const addFlashMessage = useContext(ExampleContext);
+  const { addFlashMessage } = useContext(ExampleContext);
 
   async function handleSubmit(e) {
     e.preventDefault();

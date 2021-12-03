@@ -36,8 +36,10 @@ function Main() {
     }
   }
 
+  const [state, dispatch] = useReducer(ourReducer, initialState);
+
   return (
-    <ExampleContext.Provider value={{ addFlashMessage, setLoggedIn, loggedIn }}>
+    <ExampleContext.Provider value={{ state, dispatch }}>
       <BrowserRouter>
         <FlashMessages messages={flashMessages} />
         <Header />

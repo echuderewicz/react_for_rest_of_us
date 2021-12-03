@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Axios from "axios";
@@ -17,6 +17,26 @@ import FlashMessages from "./components/FlashMessages";
 import ExampleContext from "./ExampleContext";
 
 function Main() {
+  const initialState = {
+    loggedIn: Boolean(localStorage.getItem("complexappToken")),
+    flashMessages: [],
+  };
+
+  function ourReducer(state, action) {
+    switch (action.type) {
+      case "login":
+        return { loggedIn: true, flashMessages: state.flashMessages };
+      case "logout":
+        return { loggedIn: false, flashMessages: state.flashMessages };
+      case "flashmessage":
+        return {
+          loggedIn: state.loggedIn,
+          flashMessages: state.flashMessages.concat(action.value),
+        };
+    }
+  }
+  const [state, dispatch] = useReducer(ourReducer, initialState);
+
   const [loggedIn, setLoggedIn] = useState(
     //basically the code below evaluates to true or false depending on whether
     //the item in local storage is present or not

@@ -19,7 +19,6 @@ import Home from "./components/Home";
 import CreatePost from "./components/CreatePost";
 import ViewSinglePost from "./components/ViewSinglePost";
 import FlashMessages from "./components/FlashMessages";
-import { DRAFTABLE } from "immer/dist/internal";
 
 function Main() {
   const initialState = {
@@ -51,18 +50,27 @@ function Main() {
           <FlashMessages messages={state.flashMessages} />
           <Header />
           <Switch>
+            {/* login...true Home...false HomeGuest */}
             <Route path="/" exact>
               {state.loggedIn ? <Home /> : <HomeGuest />}
             </Route>
+
+            {/* create post */}
             <Route path="/create-post">
               <CreatePost />
             </Route>
+
+            {/* display individual post just created */}
             <Route path="/post/:id">
               <ViewSinglePost />
             </Route>
+
+            {/* about us */}
             <Route path="/about-us">
               <About />
             </Route>
+
+            {/* terms */}
             <Route path="/terms">
               <Terms />
             </Route>

@@ -8,6 +8,14 @@ function Page(props) {
     window.scrollTo(0, 0);
   }, []);
 
+  //The container component is just a wrapper around the content
+  //to display it either "wide" or normal.
+  //Visually Rich Comments would be a way to provide
+  //a sketch of this abstraction which could visually
+  //show how the Container component gets nested into
+  //the Page component and the the props.children get nested
+  //within Container compoent below.
+
   return <Container wide={props.wide}>{props.children}</Container>;
 }
 

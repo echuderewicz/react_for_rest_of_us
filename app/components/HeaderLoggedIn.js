@@ -1,15 +1,13 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import DispatchContext from "../DispatchContext";
+import StateContext from "../StateContext";
 
 function HeaderLoggedIn(props) {
   const appDispatch = useContext(DispatchContext);
+  const appState = useContext(StateContext);
   function handleLogout() {
     appDispatch({ type: "logout" });
-    //remove items from local storage
-    localStorage.removeItem("complexappToken");
-    localStorage.removeItem("complexappUsername");
-    localStorage.removeItem("complexappAvatar");
   }
   return (
     <div className="flex-row my-3 my-md-0">
@@ -24,7 +22,7 @@ function HeaderLoggedIn(props) {
         <img
           className="small-header-avatar"
           //local storage contains an encrypted link to an avatar photo associated with your email address of echuderewicz@gmail.com
-          src={localStorage.getItem("complexappAvatar")}
+          src={appState.user.avatar}
         />
       </a>
       <Link className="btn btn-sm btn-success mr-2" to="/create-post">

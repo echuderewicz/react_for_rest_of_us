@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useImmerReducer } from "use-immer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -24,24 +24,45 @@ function Main() {
   const initialState = {
     loggedIn: Boolean(localStorage.getItem("complexappToken")),
     flashMessages: [],
+    user: {
+      token: localStorage.getItem("complexappToken"),
+      username: localStorage.getItem("complexappUsername"),
+      avatar: localStorage.getItem("complexappAvatar"),
+    },
   };
 
-  function ourReducer(draft, action) {
+  function ourReducer(immerDraft, action) {
+    //immer creates a draft of state and so you can mutate it
     switch (action.type) {
       case "login":
-        draft.loggedIn = true;
+        immerDraft.loggedIn = true;
+        immerDraft.user = action.data;
         return;
       case "logout":
-        draft.loggedIn = false;
+        immerDraft.loggedIn = false;
         return;
       case "flashmessage":
-        //we use push instead of concat since it's draft that we CAN mutate.
-        draft.flashMessages.push(action.value);
+        //we use push instead of concat since it's immerDraft that we CAN mutate.
+        immerDraft.flashMessages.push(action.value);
         return;
     }
   }
 
   const [state, dispatch] = useImmerReducer(ourReducer, initialState);
+
+  useEffect(() => {
+    if (state.loggedIn) {
+      localStorage.setItem("complexappToken", state.user.token);
+      localStorage.setItem("complexappUsername", state.user.username);
+      localStorage.setItem("complexappAvatar", state.user.avatar);
+    } else {
+      localStorage.removeItem("complexappToken");
+      localStorage.removeItem("complexappUsername");
+      localStorage.removeItem("complexappAvatar");
+    }
+    //the change in value of this argument will trigger function above running
+    //keep in mind that the below value: state.loggedIn must be in an array
+  }, [state.loggedIn]);
 
   return (
     <StateContext.Provider value={state}>
@@ -91,6 +112,7 @@ function Main() {
 //32. Render Different Components Depending on State
 //38. Context
 //41. What is Immer?
+//42. useEffect Practice
 
 ReactDOM.render(<Main />, document.querySelector("#app"));
 

@@ -19,6 +19,7 @@ import Home from "./components/Home";
 import CreatePost from "./components/CreatePost";
 import ViewSinglePost from "./components/ViewSinglePost";
 import FlashMessages from "./components/FlashMessages";
+import Profile from "./components/Profile";
 
 function Main() {
   const initialState = {
@@ -71,6 +72,10 @@ function Main() {
           <FlashMessages messages={state.flashMessages} />
           <Header />
           <Switch>
+            {/* the use variable username shows in detructure line in profile */}
+            <Route path="/profile/:username">
+              <Profile />
+            </Route>
             {/* login...true Home...false HomeGuest */}
             <Route path="/" exact>
               {state.loggedIn ? <Home /> : <HomeGuest />}
@@ -113,6 +118,7 @@ function Main() {
 //38. Context
 //41. What is Immer?
 //42. useEffect Practice
+//43. Profile Screen
 
 ReactDOM.render(<Main />, document.querySelector("#app"));
 

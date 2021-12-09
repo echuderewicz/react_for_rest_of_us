@@ -1,9 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Page from "./Page";
 import { useParams } from "react-router-dom";
+import Axios from "axios";
+import StateContext from "../StateContext";
 
 function Profile() {
   const { username } = useParams();
+  const appState = useContext(StateContext);
+  const [profileData, setProfileData] = useState({
+    //mimmick the data
+    profileUsername: "...",
+    profileAvatar: "https://gravatar.com/avatar/placeholder?s=128",
+    isFollowing: false,
+    counts: { postCount: "", followerCount: "", followingCount: "" },
+  });
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await Axios.post(`/profile/${username}`, {
+          token: appState.user.token,
+        });
+        console.log(response.data);
+      } catch (e) {
+        console.log("There was problem");
+      }
+    }
+    fetchData();
+  });
   return (
     <Page title="Profile Screen">
       <h2>

@@ -1,6 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function ProfilePosts() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (isLoading) {
+    return <div>Loading Until The End of Time...</div>;
+  }
   return (
     <div className="list-group">
       <a href="#" className="list-group-item list-group-item-action">

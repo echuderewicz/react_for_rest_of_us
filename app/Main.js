@@ -123,8 +123,8 @@ function Main() {
 
 //Section 7: Actually Building Our App
 //43. Profile Screen
-//44. Load Posts by Author - CURRENT
-//45. Make Single Post Screen Actually Load the Real Content
+//44. Load Posts by Author
+//45. Make Single Post Screen Actually Load the Real Content - CURRENT
 //46. Animated Loading Icon
 //47.
 //48.

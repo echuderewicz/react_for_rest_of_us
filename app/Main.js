@@ -108,6 +108,8 @@ function Main() {
   );
 }
 
+//Udemy React For The Rest Of Us - Sections
+
 //Let's start building our first app
 //Routing (Single Page Applications)
 //20. Create a Reusable "Container" Component
@@ -118,7 +120,66 @@ function Main() {
 //38. Context
 //41. What is Immer?
 //42. useEffect Practice
+
+//Section 7: Actually Building Our App
 //43. Profile Screen
+//44. Load Posts by Author - CURRENT
+//45. Make Single Post Screen Actually Load the Real Content
+//46. Animated Loading Icon
+//47.
+//48.
+
+//Section 8: Edit and Delete Post Actions
+//49.
+//50.
+//51.
+//52.
+//53.
+//54.
+
+//Section 9: Search Overlay
+//55.
+//56.
+//57.
+//58.
+//59.
+//60.
+
+//Section 10: Letting Users Follow Each Other
+//61.
+//62.
+//62.
+//63.
+
+//Section 11: Building a Live Chat Feature
+//64.
+//65.
+//66.
+//67.
+
+//Section 12: Registration Form Validation
+//68.
+//69.
+//70.
+//71.
+//72.
+//73.
+
+//Section 13: Getting Ready To Go Live
+//74.
+//75.
+//76.
+//77.
+//78.
+//79.
+//80.
+//81.
+
+//Section 14: Extra Credit Ideas/Challenges
+//82.
+//83.
+//84.
+//85.
 
 ReactDOM.render(<Main />, document.querySelector("#app"));
 

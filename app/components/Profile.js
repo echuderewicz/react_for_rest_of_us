@@ -25,7 +25,7 @@ function Profile() {
         });
         setProfileData(response.data);
       } catch (e) {
-        console.log("there was a problem");
+        console.log("there was a problem amigo");
       }
     }
     fetchData();

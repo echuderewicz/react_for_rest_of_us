@@ -127,15 +127,15 @@ function Main() {
 //45. Make Single Post Screen Actually Load the Real Content
 //46. Animated Loading Icon
 //47. Cleaning Up After Ourselves
-//48. Markdown in React - CURRENT
+//48. Markdown in React
 
 //Section 8: Edit and Delete Post Actions
-//49.
-//50.
-//51.
-//52.
-//53.
-//54.
+//49. Adding Tooltips on Hover for Actions - CURRENT
+//50. Edit (Update) Post Component
+//51. Edit Post Continued
+//52. Client-Side Form Validation
+//53. Quick Attention To Detail Features
+//54. Delete a Post
 
 //Section 9: Search Overlay
 //55.

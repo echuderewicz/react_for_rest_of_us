@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
+import LoadingDotsIcon from "./LoadingDotsIcon";
 
 function ProfilePosts() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ function ProfilePosts() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading Until The End of Time...</div>;
+    return <LoadingDotsIcon />;
   }
 
   return (

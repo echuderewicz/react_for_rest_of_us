@@ -19,17 +19,27 @@ function Profile() {
   });
 
   useEffect(() => {
+    const ourRequest = Axios.CancelToken.source();
     async function fetchData() {
       try {
-        const response = await Axios.post(`/profile/${username}`, {
-          token: appState.user.token,
-        });
+        const response = await Axios.post(
+          `/profile/${username}`,
+          {
+            token: appState.user.token,
+          },
+          {
+            cancelToken: ourRequest.token,
+          }
+        );
         setProfileData(response.data);
       } catch (e) {
-        console.log("there was a problem amigo");
+        console.log("problem generated in catch: profile.js");
       }
     }
     fetchData();
+    return () => {
+      ourRequest.cancel();
+    };
   });
   return (
     <Page title="Profile Screen">

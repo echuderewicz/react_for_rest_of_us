@@ -9,17 +9,23 @@ function ProfilePosts() {
   const { username } = useParams();
 
   useEffect(() => {
+    const ourRequest = Axios.CancelToken.source();
     async function fetchPosts() {
       try {
-        const response = await Axios.get(`/profile/${username}/posts`);
+        const response = await Axios.get(`/profile/${username}/posts`, {
+          cancelToken: ourRequest.token,
+        });
         //console.log(response.data);
         setPosts(response.data);
         setIsLoading(false);
       } catch (e) {
-        console.log("There was a problem mr. c");
+        console.log("problem generated in catch: ProfilePosts.js");
       }
     }
     fetchPosts();
+    return () => {
+      ourRequest.cancel();
+    };
   }, []);
 
   if (isLoading) {

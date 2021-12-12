@@ -125,9 +125,9 @@ function Main() {
 //43. Profile Screen
 //44. Load Posts by Author
 //45. Make Single Post Screen Actually Load the Real Content
-//46. Animated Loading Icon - CURRENT
-//47.
-//48.
+//46. Animated Loading Icon
+//47. Cleaning Up After Ourselves - CURRENT
+//48. Markdown in React
 
 //Section 8: Edit and Delete Post Actions
 //49.

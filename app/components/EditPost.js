@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 function EditPost() {
-  return <></>;
+  return <>Edit Post</>;
 }
 
 export default EditPost;

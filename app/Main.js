@@ -20,6 +20,7 @@ import CreatePost from "./components/CreatePost";
 import ViewSinglePost from "./components/ViewSinglePost";
 import FlashMessages from "./components/FlashMessages";
 import Profile from "./components/Profile";
+import EditPost from "./components/EditPost";
 
 function Main() {
   const initialState = {
@@ -87,8 +88,13 @@ function Main() {
             </Route>
 
             {/* display individual post just created */}
-            <Route path="/post/:id">
+            <Route path="/post/:id" exact>
               <ViewSinglePost />
+            </Route>
+
+            {/* edit a post */}
+            <Route path="/post/:id/edit" exact>
+              <EditPost />
             </Route>
 
             {/* about us */}

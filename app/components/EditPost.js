@@ -45,55 +45,39 @@ function ViewSinglePost() {
   }/${date.getDate()}/${date.getFullYear()}`;
 
   return (
-    <Page title={post.title}>
-      <div className="d-flex justify-content-between">
-        <h2>{post.title}</h2>
-        <span className="pt-2">
-          <Link
-            to={`/post/${post._id}/edit`}
-            data-tip="Edit"
-            data-for="edit"
-            className="text-primary mr-2"
-          >
-            <i className="fas fa-edit"></i>
-          </Link>
-          <ReactTooltip id="edit" className="custom-tooltip" />{" "}
-          <a
-            data-tip="Delete"
-            data-for="delete"
-            className="delete-post-button text-danger"
-          >
-            <i className="fas fa-trash"></i>
-          </a>
-          <ReactTooltip id="delete" className="custom-tooltip" />
-        </span>
-      </div>
+    <Page title="Edit Post">
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="post-title" className="text-muted mb-1">
+            <small>Title</small>
+          </label>
+          <input
+            onChange={(e) => setTitle(e.target.value)}
+            autoFocus
+            name="title"
+            id="post-title"
+            className="form-control form-control-lg form-control-title"
+            type="text"
+            placeholder=""
+            autoComplete="off"
+          />
+        </div>
 
-      <p className="text-muted small mb-4">
-        <Link to={`/profile/${post.author.username}`}>
-          <img className="avatar-tiny" src={post.author.avatar} />
-        </Link>
-        Posted by{" "}
-        <Link to={`/profile/${post.author.username}`}>
-          {post.author.username}
-        </Link>{" "}
-        on {dateFormatted}
-      </p>
+        <div className="form-group">
+          <label htmlFor="post-body" className="text-muted mb-1 d-block">
+            <small>Body Content</small>
+          </label>
+          <textarea
+            onChange={(e) => setBody(e.target.value)}
+            name="body"
+            id="post-body"
+            className="body-content tall-textarea form-control"
+            type="text"
+          ></textarea>
+        </div>
 
-      <div className="body-content">
-        <ReactMarkdown
-          children={post.body}
-          allowedTypes={[
-            "paragraph",
-            "strong",
-            "emphasis",
-            "text",
-            "heading",
-            "list",
-            "listItem",
-          ]}
-        />
-      </div>
+        <button className="btn btn-primary">Save New Post</button>
+      </form>
     </Page>
   );
 }

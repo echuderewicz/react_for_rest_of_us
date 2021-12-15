@@ -76,7 +76,7 @@ function ViewSinglePost() {
           />
         </div>
 
-        <button className="btn btn-primary">Save New Post</button>
+        <button className="btn btn-primary">Save Updates </button>
       </form>
     </Page>
   );

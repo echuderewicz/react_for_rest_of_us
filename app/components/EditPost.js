@@ -1,12 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { useImmerReducer } from "use-immer";
 import Page from "./Page";
 import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
 import LoadingDotsIcon from "./LoadingDotsIcon";
-import ReactMarkdown from "react-markdown";
-import ReactTooltip from "react-tooltip";
 
 function ViewSinglePost() {
+  const originalState = {
+    title: {
+      value: "",
+      hasErrors: false,
+      message: "",
+    },
+    body: {
+      value: "",
+      hasErrors: false,
+      message: "",
+    },
+    loading: true,
+    saveIsLoading: false,
+    id: useParams().id,
+    sendCount: 0,
+  };
+
+  function ourReducer() {}
+  const [state, dispatch] = useImmerReducer(ourReducer, originalState);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [post, setPost] = useState();

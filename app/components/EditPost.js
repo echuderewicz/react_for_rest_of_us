@@ -26,7 +26,16 @@ function ViewSinglePost() {
     sendCount: 0,
   };
 
-  function ourReducer() {}
+  function ourReducer(draft, action) {
+    switch (action.type) {
+      case "fetchComplete":
+        //action.value.title ("is a property on the object sent back in the axios request")
+        draft.title.value = action.value.title;
+        draft.body.value = action.value.body;
+        draft.loading = false;
+        return;
+    }
+  }
   const [state, dispatch] = useImmerReducer(ourReducer, originalState);
 
   useEffect(() => {
@@ -36,9 +45,7 @@ function ViewSinglePost() {
         const response = await Axios.get(`/post/${id}`, {
           cancelToken: ourRequest.token,
         });
-        console.log(response.data);
-        setPost(response.data);
-        setIsLoading(false);
+        dispatch({ type: "fetchComplete", value: response.data });
       } catch (e) {
         console.log("problem generated in catch: ViewSinglePost.js");
       }

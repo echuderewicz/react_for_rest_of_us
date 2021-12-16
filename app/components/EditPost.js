@@ -28,9 +28,6 @@ function ViewSinglePost() {
 
   function ourReducer() {}
   const [state, dispatch] = useImmerReducer(ourReducer, originalState);
-  const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
-  const [post, setPost] = useState();
 
   useEffect(() => {
     const ourRequest = Axios.CancelToken.source();

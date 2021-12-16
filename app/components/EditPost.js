@@ -42,7 +42,7 @@ function ViewSinglePost() {
     const ourRequest = Axios.CancelToken.source();
     async function fetchPost() {
       try {
-        const response = await Axios.get(`/post/${id}`, {
+        const response = await Axios.get(`/post/${state.id}`, {
           cancelToken: ourRequest.token,
         });
         dispatch({ type: "fetchComplete", value: response.data });
@@ -56,18 +56,13 @@ function ViewSinglePost() {
     };
   }, []);
 
-  if (isLoading) {
+  if (state.isFetching) {
     return (
       <Page title="...">
         <LoadingDotsIcon />
       </Page>
     );
   }
-
-  const date = new Date(post.createdDate);
-  const dateFormatted = `${
-    date.getMonth() + 1
-  }/${date.getDate()}/${date.getFullYear()}`;
 
   return (
     <Page title="Edit Post">
@@ -77,7 +72,7 @@ function ViewSinglePost() {
             <small>Title</small>
           </label>
           <input
-            value={post.title}
+            value={state.title.value}
             autoFocus
             name="title"
             id="post-title"
@@ -93,7 +88,7 @@ function ViewSinglePost() {
             <small>Body Content</small>
           </label>
           <textarea
-            value={post.body}
+            value={state.body.value}
             name="body"
             id="post-body"
             className="body-content tall-textarea form-control"

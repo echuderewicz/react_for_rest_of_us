@@ -6,6 +6,8 @@ import Axios from "axios";
 import LoadingDotsIcon from "./LoadingDotsIcon";
 
 function ViewSinglePost() {
+  //2021-12-16T00:02:19.777Z
+  //finding it hard to follow at this point
   const originalState = {
     title: {
       value: "",
@@ -20,6 +22,7 @@ function ViewSinglePost() {
     loading: true,
     saveIsLoading: false,
     id: useParams().id,
+    //keep track of how many times we send an axios request
     sendCount: 0,
   };
 

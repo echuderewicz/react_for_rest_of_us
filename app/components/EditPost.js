@@ -19,8 +19,8 @@ function ViewSinglePost() {
       hasErrors: false,
       message: "",
     },
-    loading: true,
-    saveIsLoading: false,
+    isFetching: true,
+    isSaving: false,
     id: useParams().id,
     //keep track of how many times we send an axios request
     sendCount: 0,
@@ -32,7 +32,7 @@ function ViewSinglePost() {
         //action.value.title ("is a property on the object sent back in the axios request")
         draft.title.value = action.value.title;
         draft.body.value = action.value.body;
-        draft.loading = false;
+        draft.isFetching = false;
         return;
     }
   }

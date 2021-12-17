@@ -41,6 +41,7 @@ function Profile() {
       ourRequest.cancel();
     };
   });
+
   return (
     <Page title="Profile Screen">
       <h2>

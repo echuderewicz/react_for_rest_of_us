@@ -5,9 +5,11 @@ import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
 import LoadingDotsIcon from "./LoadingDotsIcon";
 import StateContext from "../StateContext";
+import DispatchContext from "../DispatchContext";
 
 function ViewSinglePost() {
   const appState = useContext(StateContext);
+  const appDispatch = useContext(DispatchContext);
   //2021-12-16T00:02:19.777Z
   //finding it hard to follow at this point
   const originalState = {
@@ -45,6 +47,12 @@ function ViewSinglePost() {
       case "submitRequest":
         draft.sendCount++;
         return;
+      case "saveRequestStarted":
+        draft.isSaving = true;
+        return;
+      case "saveRequestFinished":
+        draft.isSaving = false;
+        return;
     }
   }
   const [state, dispatch] = useImmerReducer(ourReducer, originalState);
@@ -74,6 +82,7 @@ function ViewSinglePost() {
 
   useEffect(() => {
     if (state.sendCount) {
+      dispatch({ type: "saveRequestStarted" });
       const ourRequest = Axios.CancelToken.source();
       async function fetchPost() {
         try {
@@ -88,7 +97,8 @@ function ViewSinglePost() {
               cancelToken: ourRequest.token,
             }
           );
-          alert("congrats, post updated");
+          dispatch({ type: "saveRequestFinished" });
+          appDispatch({ type: "flashmessage", value: "Post was updated" });
         } catch (e) {
           console.log("problem generated in catch: ViewSinglePost.js");
         }
@@ -145,8 +155,10 @@ function ViewSinglePost() {
             type="text"
           />
         </div>
-
-        <button className="btn btn-primary">Save Updates </button>
+        {/* when isSaving is true, it's disabled */}
+        <button className="btn btn-primary" disabled={state.isSaving}>
+          Save Updates{" "}
+        </button>
       </form>
     </Page>
   );

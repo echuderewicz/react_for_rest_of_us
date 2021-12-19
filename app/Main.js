@@ -140,8 +140,8 @@ function Main() {
 //49. Adding Tooltips on Hover for Actions
 //50. Edit (Update) Post Component
 //51. Edit Post Continued
-//52. Client-Side Form Validation - CURRENT
-//53. Quick Attention To Detail Features
+//52. Client-Side Form Validation
+//53. Quick Attention To Detail Features  - CURRENT
 //54. Delete a Post
 
 //Section 9: Search Overlay

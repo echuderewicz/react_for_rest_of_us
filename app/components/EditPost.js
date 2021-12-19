@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useImmerReducer } from "use-immer";
 import Page from "./Page";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, withRouter } from "react-router-dom";
 import Axios from "axios";
 import LoadingDotsIcon from "./LoadingDotsIcon";
 import StateContext from "../StateContext";
 import DispatchContext from "../DispatchContext";
 import NotFound from "./NotFound";
 
-function ViewSinglePost() {
+function EditPost(props) {
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
   //2021-12-16T00:02:19.777Z
@@ -97,6 +97,13 @@ function ViewSinglePost() {
         });
         if (response.data) {
           dispatch({ type: "fetchComplete", value: response.data });
+          if (appState.user.username != response.data.author.username) {
+            appDispatch({
+              type: "flashMessage",
+              value: "you do not have permission to edit this post",
+            });
+            props.history.push("/");
+          }
         } else {
           dispatch({ type: "notFound" });
         }
@@ -223,4 +230,4 @@ function ViewSinglePost() {
   );
 }
 
-export default ViewSinglePost;
+export default withRouter(EditPost);

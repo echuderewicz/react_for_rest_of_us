@@ -48,6 +48,7 @@ function ViewSinglePost() {
         return;
       case "submitRequest":
         if (!draft.title.hasErrors && !draft.body.hasErrors) {
+          //sendCount is monitored for changes in the second useEffect argument below
           draft.sendCount++;
         }
         return;
@@ -80,6 +81,8 @@ function ViewSinglePost() {
     dispatch({ type: "submitRequest" });
   }
 
+  //useEffect #1
+
   useEffect(() => {
     const ourRequest = Axios.CancelToken.source();
     async function fetchPost() {
@@ -97,6 +100,8 @@ function ViewSinglePost() {
       ourRequest.cancel();
     };
   }, []);
+
+  //useEffect #2
 
   useEffect(() => {
     if (state.sendCount) {
@@ -126,6 +131,7 @@ function ViewSinglePost() {
         ourRequest.cancel();
       };
     }
+    //the incrementing of state.sendCount will trigger useEffect #2
   }, [state.sendCount]);
 
   if (state.isFetching) {

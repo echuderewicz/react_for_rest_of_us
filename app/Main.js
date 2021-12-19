@@ -77,6 +77,7 @@ function Main() {
             <Route path="/profile/:username">
               <Profile />
             </Route>
+
             {/* login...true Home...false HomeGuest */}
             <Route path="/" exact>
               {state.loggedIn ? <Home /> : <HomeGuest />}
@@ -138,8 +139,8 @@ function Main() {
 //Section 8: Edit and Delete Post Actions
 //49. Adding Tooltips on Hover for Actions
 //50. Edit (Update) Post Component
-//51. Edit Post Continued - CURRENT
-//52. Client-Side Form Validation
+//51. Edit Post Continued
+//52. Client-Side Form Validation - CURRENT
 //53. Quick Attention To Detail Features
 //54. Delete a Post
 

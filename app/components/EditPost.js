@@ -138,6 +138,9 @@ function ViewSinglePost() {
             placeholder=""
             autoComplete="off"
           />
+          <div className="alert alert-danger small liveValidateMessage">
+            example message
+          </div>
         </div>
 
         <div className="form-group">

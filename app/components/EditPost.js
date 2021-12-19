@@ -144,6 +144,7 @@ function ViewSinglePost() {
 
   return (
     <Page title="Edit Post">
+      <Link to={`/post/${state.id}`}>View Post Instead</Link>
       <form onSubmit={submitHandler}>
         {/* title form element below */}
         <div className="form-group">

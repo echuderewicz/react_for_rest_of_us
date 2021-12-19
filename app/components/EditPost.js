@@ -99,7 +99,7 @@ function EditPost(props) {
           dispatch({ type: "fetchComplete", value: response.data });
           if (appState.user.username != response.data.author.username) {
             appDispatch({
-              type: "flashMessage",
+              type: "flashmessage",
               value: "you do not have permission to edit this post",
             });
             props.history.push("/");

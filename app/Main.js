@@ -145,32 +145,31 @@ function Main() {
 //54. Delete a Post
 
 //Section 9: Search Overlay
-//55.
-//56.
-//57.
-//58.
-//59.
-//60.
+//55. Setting Up Search Overlay
+//56. React Transition Group (CSS Transition)
+//57. Regarding The Index In The Next Lesson
+//58. Waiting for User To Stop Typing
+//59. Finishing Search (Part 1)
+//60. Finishing Search (Part 2)
 
 //Section 10: Letting Users Follow Each Other
-//61.
-//62.
-//62.
-//63.
+//61. Follow User Feature
+//62. Profile Followers and Following Tabs
+//63. Homepage Post Feed
 
 //Section 11: Building a Live Chat Feature
-//64.
-//65.
-//66.
-//67.
+//64. Live Chat User Interface
+//65. Sending & Receiving Chats (Part 1)
+//66. Sending & Receiving Chats (Part 2)
+//67. Finishing Chat
 
 //Section 12: Registration Form Validation
-//68.
-//69.
-//70.
-//71.
-//72.
-//73.
+//68. Improving Registration Form
+//69. Finishing Registration Form (Part 1)
+//70. Quick Note About If Statement
+//71. Finishing Registration Form (Part 2)
+//72. Quick Flash Message Details
+//73. Proactively Check If Token Has Expired
 
 //Section 13: Getting Ready To Go Live
 //74.

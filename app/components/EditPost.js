@@ -28,6 +28,7 @@ function ViewSinglePost() {
     id: useParams().id,
     //keep track of how many times we send an axios request
     sendCount: 0,
+    notFound: false,
   };
 
   function ourReducer(draft, action) {
@@ -70,6 +71,9 @@ function ViewSinglePost() {
           draft.body.message = "You must provide body content";
         }
         return;
+      case "notFound":
+        draft.notFound = true;
+        return;
     }
   }
   const [state, dispatch] = useImmerReducer(ourReducer, originalState);
@@ -90,7 +94,11 @@ function ViewSinglePost() {
         const response = await Axios.get(`/post/${state.id}`, {
           cancelToken: ourRequest.token,
         });
-        dispatch({ type: "fetchComplete", value: response.data });
+        if (response.data) {
+          dispatch({ type: "fetchComplete", value: response.data });
+        } else {
+          dispatch({ type: "notFound" });
+        }
       } catch (e) {
         console.log("problem generated in catch: ViewSinglePost.js");
       }
@@ -134,6 +142,20 @@ function ViewSinglePost() {
     //the incrementing of state.sendCount will trigger useEffect #2
   }, [state.sendCount]);
 
+  if (state.notFound) {
+    return (
+      <Page title="not found">
+        <div className="text-center">
+          <h2>Whoops, we cannot find that page</h2>
+          <p className="lead text-muted">
+            You can always visit the <Link to="/">Homepage</Link> to get a fresh
+            start
+          </p>
+        </div>
+      </Page>
+    );
+  }
+
   if (state.isFetching) {
     return (
       <Page title="...">
@@ -144,8 +166,10 @@ function ViewSinglePost() {
 
   return (
     <Page title="Edit Post">
-      <Link to={`/post/${state.id}`}>&laquo; View Post Instead</Link>
-      <form onSubmit={submitHandler}>
+      <Link className="small font-weight-bold" to={`/post/${state.id}`}>
+        &laquo; View Post Instead
+      </Link>
+      <form className="mt-3" onSubmit={submitHandler}>
         {/* title form element below */}
         <div className="form-group">
           <label htmlFor="post-title" className="text-muted mb-1">

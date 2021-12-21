@@ -1,18 +1,20 @@
 import React, { useEffect, useState, useContext } from "react";
 import Page from "./Page";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, withRouter } from "react-router-dom";
 import Axios from "axios";
 import LoadingDotsIcon from "./LoadingDotsIcon";
 import ReactMarkdown from "react-markdown";
 import ReactTooltip from "react-tooltip";
 import NotFound from "./NotFound";
 import StateContext from "../StateContext";
+import DispatchContext from "../DispatchContext";
 
-function ViewSinglePost() {
+function ViewSinglePost(props) {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [post, setPost] = useState();
   const appState = useContext(StateContext);
+  const appDispatch = useContext(DispatchContext);
 
   useEffect(() => {
     const ourRequest = Axios.CancelToken.source();
@@ -63,6 +65,30 @@ function ViewSinglePost() {
     return false;
   }
 
+  async function deleteHandler() {
+    const areYouSure = window.confirm(
+      "Do you really want to delete this post?"
+    );
+
+    if (areYouSure) {
+      try {
+        //alert("hello");
+        const response = await Axios.delete(`/post/${id}`, {
+          data: { token: appState.user.token },
+        });
+        if (response.data == "Success") {
+          appDispatch({
+            type: "flashmessage",
+            data: "Post was successfully deleted",
+          });
+        }
+        props.history.push(`/profile/${appState.user.username}`);
+      } catch (e) {
+        console.log("There was a problem");
+      }
+    }
+  }
+
   return (
     <Page title={post.title}>
       <div className="d-flex justify-content-between">
@@ -79,6 +105,7 @@ function ViewSinglePost() {
             </Link>
             <ReactTooltip id="edit" className="custom-tooltip" />{" "}
             <a
+              onClick={deleteHandler}
               data-tip="Delete"
               data-for="delete"
               className="delete-post-button text-danger"
@@ -119,4 +146,4 @@ function ViewSinglePost() {
   );
 }
 
-export default ViewSinglePost;
+export default withRouter(ViewSinglePost);

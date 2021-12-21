@@ -147,8 +147,8 @@ function Main() {
 //50. Edit (Update) Post Component
 //51. Edit Post Continued
 //52. Client-Side Form Validation
-//53. Quick Attention To Detail Features  - CURRENT
-//54. Delete a Post
+//53. Quick Attention To Detail Features
+//54. Delete a Post   - CURRENT
 
 //Section 9: Search Overlay
 //55. Setting Up Search Overlay

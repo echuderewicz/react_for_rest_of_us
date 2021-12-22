@@ -3,6 +3,21 @@ import DispatchContext from "../DispatchContext";
 
 function Search() {
   const appDispatch = useContext(DispatchContext);
+
+  //run only the first time this component is rendered
+  useEffect(() => {
+    document.addEventListener("keyup", searchKeyPressHandler);
+    return () => {
+      document.removeEventListener("keyup", searchKeyPressHandler);
+    };
+  }, []);
+
+  function searchKeyPressHandler(e) {
+    if (e.keyCode == 27) {
+      appDispatch({ type: "closeSearch" });
+    }
+  }
+
   return (
     <div className="search-overlay">
       <div className="search-overlay-top shadow-sm">

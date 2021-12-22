@@ -33,6 +33,7 @@ function Main() {
       username: localStorage.getItem("complexappUsername"),
       avatar: localStorage.getItem("complexappAvatar"),
     },
+    isSearchOpen: false,
   };
 
   function ourReducer(immerDraft, action) {
@@ -48,6 +49,12 @@ function Main() {
       case "flashmessage":
         //we use push instead of concat since it's immerDraft that we CAN mutate.
         immerDraft.flashMessages.push(action.value);
+        return;
+      case "openSearch":
+        immerDraft.isSearchOpen = true;
+        return;
+      case "closeSearch":
+        immerDraft.isSearchOpen = false;
         return;
     }
   }
@@ -115,7 +122,8 @@ function Main() {
               <NotFound />
             </Route>
           </Switch>
-          <Search />
+          {/* initial state of isSearchOpen is false */}
+          {state.isSearchOpen ? <Search /> : ""}
           <Footer />
         </BrowserRouter>
       </DispatchContext.Provider>

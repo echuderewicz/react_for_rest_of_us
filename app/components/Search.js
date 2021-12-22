@@ -14,7 +14,7 @@ function Search() {
     requestCount: 0,
   });
 
-  //run only the first time this component is rendered
+  //useEffect #1: run only the first time this component is rendered
   useEffect(() => {
     document.addEventListener("keyup", searchKeyPressHandler);
     return () => {
@@ -22,9 +22,34 @@ function Search() {
     };
   }, []);
 
+  //useEffect #2:
+  //the below use effect handles the waiting
+  //for the user to stop typing
+
   useEffect(() => {
-    console.log(state.searchTerm);
+    const delay = setTimeout(() => {
+      setstate((draft) => {
+        //once typing ceases
+        //requestCount is incremented
+        draft.requestCount++;
+      });
+      console.log(state.searchTerm);
+    }, 3000);
+
+    //cleanup will get initiated prior the above code
+    //running again due to another key being pressed
+    return () => clearTimeout(delay);
   }, [state.searchTerm]);
+
+  //useEffect #3: Watches for the change
+  //in state of requestCount and then
+  //fires the axios request.
+
+  useEffect(() => {
+    if (state.requestCount) {
+      //send axios request here
+    }
+  }, [state.requestCount]);
 
   function searchKeyPressHandler(e) {
     if (e.keyCode == 27) {

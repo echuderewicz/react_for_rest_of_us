@@ -158,11 +158,11 @@ function Main() {
 //51. Edit Post Continued
 //52. Client-Side Form Validation
 //53. Quick Attention To Detail Features
-//54. Delete a Post   - CURRENT
+//54. Delete a Post
 
 //Section 9: Search Overlay
 //55. Setting Up Search Overlay
-//56. React Transition Group (CSS Transition)
+//56. React Transition Group (CSS Transition)  - CURRENT
 //57. Regarding The Index In The Next Lesson
 //58. Waiting for User To Stop Typing
 //59. Finishing Search (Part 1)

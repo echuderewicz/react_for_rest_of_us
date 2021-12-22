@@ -22,10 +22,21 @@ function Search() {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(state.searchTerm);
+  }, [state.searchTerm]);
+
   function searchKeyPressHandler(e) {
     if (e.keyCode == 27) {
       appDispatch({ type: "closeSearch" });
     }
+  }
+
+  function handleInput(e) {
+    const value = e.target.value;
+    setstate((draft) => {
+      draft.searchTerm = value;
+    });
   }
 
   return (
@@ -36,6 +47,7 @@ function Search() {
             <i className="fas fa-search"></i>
           </label>
           <input
+            onChange={handleInput}
             autoFocus
             type="text"
             autoComplete="off"

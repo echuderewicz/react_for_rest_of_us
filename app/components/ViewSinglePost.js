@@ -79,7 +79,7 @@ function ViewSinglePost(props) {
         if (response.data == "Success") {
           appDispatch({
             type: "flashmessage",
-            value: "Post was successfully deleted homeboy",
+            value: "Post was successfully deleted",
           });
         }
         props.history.push(`/profile/${appState.user.username}`);

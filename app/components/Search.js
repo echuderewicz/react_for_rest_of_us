@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import DispatchContext from "../DispatchContext";
 import { useImmer } from "use-immer";
+import Axios from "axios";
 
 function Search() {
   const appDispatch = useContext(DispatchContext);
@@ -47,7 +48,25 @@ function Search() {
 
   useEffect(() => {
     if (state.requestCount) {
-      //send axios request here
+      //cancel token to cancel axios request
+      //if this component unmounts in the middle of the request
+      const ourRequest = Axios.CancelToken.source();
+      async function fetchResults() {
+        try {
+          const response = await Axios.post(
+            "/search",
+            {
+              searchTerm: state.searchTerm,
+            },
+            { cancelToken: ourRequest.token }
+          );
+          console.log(response.data);
+        } catch (e) {
+          console.log("there was a problem or the request was canceled");
+        }
+      }
+      fetchResults();
+      return () => ourRequest.cancel();
     }
   }, [state.requestCount]);
 

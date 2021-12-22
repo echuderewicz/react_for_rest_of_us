@@ -1,8 +1,18 @@
 import React, { useEffect, useContext } from "react";
 import DispatchContext from "../DispatchContext";
+import { useImmer } from "use-immer";
 
 function Search() {
   const appDispatch = useContext(DispatchContext);
+
+  const [state, setstate] = useImmer({
+    searchTerm: "",
+    //posts that match the search term will live in the results property
+    results: [],
+    //will be set to either "loadingIcon" or "results"
+    show: "neither",
+    requestCount: 0,
+  });
 
   //run only the first time this component is rendered
   useEffect(() => {

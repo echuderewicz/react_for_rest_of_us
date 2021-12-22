@@ -22,6 +22,7 @@ import FlashMessages from "./components/FlashMessages";
 import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
+import Search from "./components/Search";
 
 function Main() {
   const initialState = {
@@ -114,6 +115,7 @@ function Main() {
               <NotFound />
             </Route>
           </Switch>
+          <Search />
           <Footer />
         </BrowserRouter>
       </DispatchContext.Provider>

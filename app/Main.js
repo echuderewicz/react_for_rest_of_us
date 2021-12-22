@@ -171,9 +171,9 @@ function Main() {
 
 //Section 9: Search Overlay
 //55. Setting Up Search Overlay
-//56. React Transition Group (CSS Transition)  - CURRENT
+//56. React Transition Group (CSS Transition)
 //57. Regarding The Index In The Next Lesson
-//58. Waiting for User To Stop Typing
+//58. Waiting for User To Stop Typing - CURRENT
 //59. Finishing Search (Part 1)
 //60. Finishing Search (Part 2)
 

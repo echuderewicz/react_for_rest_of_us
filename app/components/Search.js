@@ -60,7 +60,9 @@ function Search() {
             },
             { cancelToken: ourRequest.token }
           );
-          console.log(response.data);
+          setstate((draft) => {
+            draft.results = response.data;
+          });
         } catch (e) {
           console.log("there was a problem or the request was canceled");
         }

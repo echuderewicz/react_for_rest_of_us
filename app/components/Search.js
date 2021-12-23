@@ -28,18 +28,28 @@ function Search() {
   //for the user to stop typing
 
   useEffect(() => {
-    const delay = setTimeout(() => {
+    //as long as the field is not blank, it will be set to true
+    if (state.searchTerm.trim()) {
       setstate((draft) => {
-        //once typing ceases
-        //requestCount is incremented
-        draft.requestCount++;
+        draft.show = "loading";
       });
-      console.log(state.searchTerm);
-    }, 3000);
+      const delay = setTimeout(() => {
+        setstate((draft) => {
+          //once typing ceases
+          //requestCount is incremented
+          draft.requestCount++;
+        });
+        console.log(state.searchTerm);
+      }, 3000);
 
-    //cleanup will get initiated prior the above code
-    //running again due to another key being pressed
-    return () => clearTimeout(delay);
+      //cleanup will get initiated prior the above code
+      //running again due to another key being pressed
+      return () => clearTimeout(delay);
+    } else {
+      setstate((draft) => {
+        draft.show = "neither";
+      });
+    }
   }, [state.searchTerm]);
 
   //useEffect #3: Watches for the change
@@ -62,6 +72,7 @@ function Search() {
           );
           setstate((draft) => {
             draft.results = response.data;
+            draft.show = "results";
           });
         } catch (e) {
           console.log("there was a problem or the request was canceled");
@@ -115,6 +126,7 @@ function Search() {
       <div className="search-overlay-bottom">
         <div className="container container--narrow py-3">
           <div
+            // based on loading flag certain classes will dipslay based on terniary
             className={
               "circle-loader " +
               (state.show == "loading" ? "circle-loader--visible" : "")

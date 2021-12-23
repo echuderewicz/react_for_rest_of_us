@@ -72,6 +72,8 @@ function Search() {
           );
           setstate((draft) => {
             draft.results = response.data;
+            //this will cause the fetched results to display
+            //and the spinning loader icon will hide
             draft.show = "results";
           });
         } catch (e) {

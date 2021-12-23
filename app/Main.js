@@ -174,8 +174,8 @@ function Main() {
 //56. React Transition Group (CSS Transition)
 //57. Regarding The Index In The Next Lesson
 //58. Waiting for User To Stop Typing
-//59. Finishing Search (Part 1) - CURRENT
-//60. Finishing Search (Part 2)
+//59. Finishing Search (Part 1)
+//60. Finishing Search (Part 2) - CURRENT
 
 //Section 10: Letting Users Follow Each Other
 //61. Follow User Feature

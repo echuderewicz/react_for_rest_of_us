@@ -120,7 +120,12 @@ function Search() {
               (state.show == "loading" ? "circle-loader--visible" : "")
             }
           ></div>
-          <div className="live-search-results live-search-results--visible">
+          <div
+            className={
+              "live-search-results " +
+              (state.show == "results" ? "live-search-results--visible" : "")
+            }
+          >
             <div className="list-group shadow-sm">
               <div className="list-group-item active">
                 <strong>Search Results</strong> (3 items found)

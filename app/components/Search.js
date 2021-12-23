@@ -145,7 +145,9 @@ function Search() {
           >
             <div className="list-group shadow-sm">
               <div className="list-group-item active">
-                <strong>Search Results</strong> (3 items found)
+                <strong>Search Results</strong> ({state.results.length}{" "}
+                {state.results.length > 1 ? "items " : "item "}
+                found)
               </div>
               <a href="#" className="list-group-item list-group-item-action">
                 <img

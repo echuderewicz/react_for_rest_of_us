@@ -114,6 +114,12 @@ function Search() {
 
       <div className="search-overlay-bottom">
         <div className="container container--narrow py-3">
+          <div
+            className={
+              "circle-loader " +
+              (state.show == "loading" ? "circle-loader--visible" : "")
+            }
+          ></div>
           <div className="live-search-results live-search-results--visible">
             <div className="list-group shadow-sm">
               <div className="list-group-item active">

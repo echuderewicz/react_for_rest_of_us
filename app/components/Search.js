@@ -75,12 +75,15 @@ function Search() {
             //this will cause the fetched results to display
             //and the spinning loader icon will hide
             draft.show = "results";
+            console.log(response.data);
           });
         } catch (e) {
           console.log("there was a problem or the request was canceled");
         }
       }
+
       fetchResults();
+
       return () => ourRequest.cancel();
     }
   }, [state.requestCount]);

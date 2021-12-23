@@ -175,10 +175,10 @@ function Main() {
 //57. Regarding The Index In The Next Lesson
 //58. Waiting for User To Stop Typing
 //59. Finishing Search (Part 1)
-//60. Finishing Search (Part 2) - CURRENT
+//60. Finishing Search (Part 2)
 
 //Section 10: Letting Users Follow Each Other
-//61. Follow User Feature
+//61. Follow User Feature  - CURRENT
 //62. Profile Followers and Following Tabs
 //63. Homepage Post Feed
 

@@ -41,7 +41,7 @@ function Search() {
           draft.requestCount++;
         });
         console.log(state.searchTerm);
-      }, 3000);
+      }, 750);
 
       //cleanup will get initiated prior the above code
       //running again due to another key being pressed

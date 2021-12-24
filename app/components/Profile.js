@@ -24,6 +24,8 @@ function Profile() {
     },
   });
 
+  //useeffect #1
+
   useEffect(() => {
     const ourRequest = Axios.CancelToken.source();
     async function fetchData() {
@@ -49,7 +51,7 @@ function Profile() {
     return () => {
       ourRequest.cancel();
     };
-  }, []);
+  }, [username]);
 
   //start following useEffect
 

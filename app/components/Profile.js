@@ -60,7 +60,11 @@ function Profile() {
           !state.profileData.isFollowing &&
           appState.user.username != state.profileData.profileUsername &&
           state.profileData.profileUsername != "..." && (
-            <button className="btn btn-primary btn-sm ml-2">
+            <button
+              onClick={startFollowing}
+              disabled={state.followActionLoading}
+              className="btn btn-primary btn-sm ml-2"
+            >
               Follow <i className="fas fa-user-plus"></i>
             </button>
           )}

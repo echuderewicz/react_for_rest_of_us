@@ -178,8 +178,8 @@ function Main() {
 //60. Finishing Search (Part 2)
 
 //Section 10: Letting Users Follow Each Other
-//61. Follow User Feature  - CURRENT
-//62. Profile Followers and Following Tabs
+//61. Follow User Feature
+//62. Profile Followers and Following Tabs   - CURRENT
 //63. Homepage Post Feed
 
 //Section 11: Building a Live Chat Feature

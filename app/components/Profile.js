@@ -56,9 +56,14 @@ function Profile() {
       <h2>
         <img className="avatar-small" src={state.profileData.profileAvatar} />{" "}
         {state.profileData.profileUsername}
-        <button className="btn btn-primary btn-sm ml-2">
-          Follow <i className="fas fa-user-plus"></i>
-        </button>
+        {appState.loggedIn &&
+          !state.profileData.isFollowing &&
+          appState.user.username != state.profileData.profileUsername &&
+          state.profileData.profileUsername != "..." && (
+            <button className="btn btn-primary btn-sm ml-2">
+              Follow <i className="fas fa-user-plus"></i>
+            </button>
+          )}
       </h2>
       <div className="profile-nav nav nav-tabs pt-2 mb-4">
         <a href="#" className="active nav-item nav-link">

@@ -51,6 +51,8 @@ function Profile() {
     };
   }, []);
 
+  //start following useEffect
+
   useEffect(() => {
     //as long as startFollowingRequestCount is greater
     //than zero the if statement will eval to true
@@ -80,7 +82,7 @@ function Profile() {
           console.log("problem generated in catch: profile.js");
         }
       }
-      console.log(state.profileData.profileUsername);
+      console.log("start: who: " + state.profileData.profileUsername);
       fetchData();
       return () => {
         ourRequest.cancel();
@@ -88,9 +90,54 @@ function Profile() {
     }
   }, [state.startFollowingRequestCount]);
 
+  // stop following useEffect
+
+  useEffect(() => {
+    //as long as stopFollowingRequestCount is greater
+    //than zero the if statement will eval to true
+    if (state.stopFollowingRequestCount) {
+      setState((draft) => {
+        draft.followActionLoading = true;
+      });
+      const ourRequest = Axios.CancelToken.source();
+      async function fetchData() {
+        try {
+          const response = await Axios.post(
+            `/removeFollow/${state.profileData.profileUsername}`,
+            {
+              token: appState.user.token,
+            },
+            {
+              cancelToken: ourRequest.token,
+            }
+          );
+
+          setState((draft) => {
+            draft.profileData.isFollowing = false;
+            draft.profileData.counts.followerCount--;
+            draft.followActionLoading = false;
+          });
+        } catch (e) {
+          console.log("problem generated in catch: profile.js");
+        }
+      }
+      console.log("stop: who: " + state.profileData.profileUsername);
+      fetchData();
+      return () => {
+        ourRequest.cancel();
+      };
+    }
+  }, [state.stopFollowingRequestCount]);
+
   function startFollowing() {
     setState((draft) => {
       draft.startFollowingRequestCount++;
+    });
+  }
+
+  function stopFollowing() {
+    setState((draft) => {
+      draft.stopFollowingRequestCount++;
     });
   }
 
@@ -99,6 +146,7 @@ function Profile() {
       <h2>
         <img className="avatar-small" src={state.profileData.profileAvatar} />{" "}
         {state.profileData.profileUsername}
+        {/* Begin Following: this button shows if you ARE NOT following*/}
         {appState.loggedIn &&
           !state.profileData.isFollowing &&
           appState.user.username != state.profileData.profileUsername &&
@@ -109,6 +157,19 @@ function Profile() {
               className="btn btn-primary btn-sm ml-2"
             >
               Follow <i className="fas fa-user-plus"></i>
+            </button>
+          )}
+        {/* Cancel Following: this button shows if you ARE following already */}
+        {appState.loggedIn &&
+          state.profileData.isFollowing &&
+          appState.user.username != state.profileData.profileUsername &&
+          state.profileData.profileUsername != "..." && (
+            <button
+              onClick={stopFollowing}
+              disabled={state.followActionLoading}
+              className="btn btn-danger btn-sm ml-2"
+            >
+              Stop Following <i className="fas fa-user-times"></i>
             </button>
           )}
       </h2>

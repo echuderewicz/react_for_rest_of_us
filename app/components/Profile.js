@@ -49,7 +49,50 @@ function Profile() {
     return () => {
       ourRequest.cancel();
     };
-  });
+  }, []);
+
+  useEffect(() => {
+    //as long as startFollowingRequestCount is greater
+    //than zero the if statement will eval to true
+    if (state.startFollowingRequestCount) {
+      setState((draft) => {
+        draft.followActionLoading = true;
+      });
+      const ourRequest = Axios.CancelToken.source();
+      async function fetchData() {
+        try {
+          const response = await Axios.post(
+            `/addFollow/${state.profileData.profileUsername}`,
+            {
+              token: appState.user.token,
+            },
+            {
+              cancelToken: ourRequest.token,
+            }
+          );
+
+          setState((draft) => {
+            draft.profileData.isFollowing = true;
+            draft.profileData.counts.followerCount++;
+            draft.followActionLoading = false;
+          });
+        } catch (e) {
+          console.log("problem generated in catch: profile.js");
+        }
+      }
+      console.log(state.profileData.profileUsername);
+      fetchData();
+      return () => {
+        ourRequest.cancel();
+      };
+    }
+  }, [state.startFollowingRequestCount]);
+
+  function startFollowing() {
+    setState((draft) => {
+      draft.startFollowingRequestCount++;
+    });
+  }
 
   return (
     <Page title="Profile Screen">

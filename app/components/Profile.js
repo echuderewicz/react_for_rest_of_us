@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Page from "./Page";
-import { useParams } from "react-router-dom";
+//NavLink will add an active or selected class to the matching link
+import { useParams, NavLink, Switch, Route } from "react-router-dom";
 import Axios from "axios";
 import StateContext from "../StateContext";
 import ProfilePosts from "./ProfilePosts";
@@ -176,15 +177,25 @@ function Profile() {
           )}
       </h2>
       <div className="profile-nav nav nav-tabs pt-2 mb-4">
-        <a href="#" className="active nav-item nav-link">
+        <NavLink
+          exact
+          to={`/profile/${state.profileData.profileUsername}`}
+          className="nav-item nav-link"
+        >
           Posts: {state.profileData.counts.postCount}
-        </a>
-        <a href="#" className="nav-item nav-link">
+        </NavLink>
+        <NavLink
+          to={`/profile/${state.profileData.profileUsername}/followers`}
+          className="nav-item nav-link"
+        >
           Followers: {state.profileData.counts.followerCount}
-        </a>
-        <a href="#" className="nav-item nav-link">
+        </NavLink>
+        <NavLink
+          to={`/profile/${state.profileData.profileUsername}/following`}
+          className="nav-item nav-link"
+        >
           Following: {state.profileData.counts.followingCount}
-        </a>
+        </NavLink>
       </div>
       <ProfilePosts></ProfilePosts>
     </Page>

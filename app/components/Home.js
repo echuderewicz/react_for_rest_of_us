@@ -35,7 +35,8 @@ function Home() {
     return () => {
       ourRequest.cancel();
     };
-  }, [username]);
+    //updated dependency array...to run first time component is rendered
+  }, []);
 
   return (
     <Page title="your feed">

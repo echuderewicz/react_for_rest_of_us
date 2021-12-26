@@ -6,6 +6,7 @@ import Axios from "axios";
 import StateContext from "../StateContext";
 import ProfilePosts from "./ProfilePosts";
 import { useImmer } from "use-immer";
+import ProfileFollowers from "./ProfileFollowers";
 
 function Profile() {
   //the username property originated
@@ -202,7 +203,7 @@ function Profile() {
           <ProfilePosts />
         </Route>
         <Route path="/profile/:username/followers">
-          <ProfilePosts />
+          <ProfileFollowers />
         </Route>
         <Route path="/profile/:username/following">
           <ProfilePosts />

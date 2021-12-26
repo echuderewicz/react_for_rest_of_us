@@ -5,11 +5,11 @@ import { useImmer } from "use-immer";
 import LoadingDotsIcon from "./LoadingDotsIcon";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import DispatchContext from "../DispatchContext";
+//import DispatchContext from "../DispatchContext";
 
 function Home() {
   const appState = useContext(StateContext);
-  const appDispatch = useContext(DispatchContext);
+  //const appDispatch = useContext(DispatchContext);
   const [state, setState] = useImmer({
     isLoading: true,
     feed: [],
@@ -62,9 +62,6 @@ function Home() {
 
               return (
                 <Link
-                  onClick={() => {
-                    appDispatch({ type: "closeSearch" });
-                  }}
                   key={post._id}
                   to={`/post/${post._id}`}
                   className="list-group-item list-group-item-action"

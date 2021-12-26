@@ -180,10 +180,10 @@ function Main() {
 //Section 10: Letting Users Follow Each Other
 //61. Follow User Feature
 //62. Profile Followers and Following Tabs
-//63. Homepage Post Feed - CURRENT
+//63. Homepage Post Feed
 
 //Section 11: Building a Live Chat Feature
-//64. Live Chat User Interface
+//64. Live Chat User Interface  - CURRENT
 //65. Sending & Receiving Chats (Part 1)
 //66. Sending & Receiving Chats (Part 2)
 //67. Finishing Chat

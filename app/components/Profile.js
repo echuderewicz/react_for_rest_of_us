@@ -190,13 +190,13 @@ function Profile() {
           to={`/profile/${state.profileData.profileUsername}/followers`}
           className="nav-item nav-link"
         >
-          Followers: {state.profileData.counts.followerCount}
+          Has Followers: {state.profileData.counts.followerCount}
         </NavLink>
         <NavLink
           to={`/profile/${state.profileData.profileUsername}/following`}
           className="nav-item nav-link"
         >
-          Following: {state.profileData.counts.followingCount}
+          Is Following: {state.profileData.counts.followingCount}
         </NavLink>
       </div>
       <Switch>

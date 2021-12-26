@@ -197,7 +197,17 @@ function Profile() {
           Following: {state.profileData.counts.followingCount}
         </NavLink>
       </div>
-      <ProfilePosts></ProfilePosts>
+      <Switch>
+        <Route exact path="/profile/:username">
+          <ProfilePosts />
+        </Route>
+        <Route path="/profile/:username/followers">
+          <ProfilePosts />
+        </Route>
+        <Route path="/profile/:username/following">
+          <ProfilePosts />
+        </Route>
+      </Switch>
     </Page>
   );
 }

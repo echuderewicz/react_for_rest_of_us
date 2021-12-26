@@ -15,7 +15,7 @@ function Home() {
     async function fetchData() {
       try {
         const response = await Axios.post(
-          `/profile/${username}`,
+          "/getHomeFeed",
           {
             token: appState.user.token,
           },
@@ -25,7 +25,8 @@ function Home() {
         );
         //setProfileData(response.data);
         setState((draft) => {
-          draft.profileData = response.data;
+          draft.isLoading = false;
+          draft.feed = response.data;
         });
       } catch (e) {
         console.log("problem generated in catch: profile.js");

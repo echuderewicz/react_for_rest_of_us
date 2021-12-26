@@ -1,9 +1,42 @@
 import React, { useEffect, useContext } from "react";
 import Page from "./Page";
 import StateContext from "../StateContext";
+import { useImmer } from "use-immer";
 
 function Home() {
   const appState = useContext(StateContext);
+  const [state, setState] = useImmer({
+    isLoading: true,
+    feed: [],
+  });
+
+  useEffect(() => {
+    const ourRequest = Axios.CancelToken.source();
+    async function fetchData() {
+      try {
+        const response = await Axios.post(
+          `/profile/${username}`,
+          {
+            token: appState.user.token,
+          },
+          {
+            cancelToken: ourRequest.token,
+          }
+        );
+        //setProfileData(response.data);
+        setState((draft) => {
+          draft.profileData = response.data;
+        });
+      } catch (e) {
+        console.log("problem generated in catch: profile.js");
+      }
+    }
+    fetchData();
+    return () => {
+      ourRequest.cancel();
+    };
+  }, [username]);
+
   return (
     <Page title="your feed">
       <h2 className="text-center">

@@ -153,7 +153,13 @@ function Search() {
                   found)
                 </div>
                 {state.results.map((post) => {
-                  return <Post post={post} key={post._id} />;
+                  return (
+                    <Post
+                      post={post}
+                      key={post._id}
+                      onClick={() => appDispatch({ type: "closeSearch" })}
+                    />
+                  );
                 })}
               </div>
             )}

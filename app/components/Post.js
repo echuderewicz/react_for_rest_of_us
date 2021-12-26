@@ -10,6 +10,8 @@ function Post(props) {
 
   return (
     <Link
+      // kinda slick, onClick was passed from Search.js
+      onClick={props.onClick}
       key={post._id}
       to={`/post/${post._id}`}
       className="list-group-item list-group-item-action"

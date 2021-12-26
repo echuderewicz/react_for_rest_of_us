@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import Page from "./Page";
 import StateContext from "../StateContext";
 import { useImmer } from "use-immer";
+import LoadingDotsIcon from "./LoadingDotsIcon";
 
 function Home() {
   const appState = useContext(StateContext);
@@ -38,6 +39,10 @@ function Home() {
     };
     //updated dependency array...to run first time component is rendered
   }, []);
+
+  if (state.isLoading) {
+    return <LoadingDotsIcon />;
+  }
 
   return (
     <Page title="your feed">

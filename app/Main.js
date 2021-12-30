@@ -194,8 +194,8 @@ function Main() {
 //Section 11: Building a Live Chat Feature
 //64. Live Chat User Interface
 //65. Sending & Receiving Chats (Part 1)
-//66. Sending & Receiving Chats (Part 2) - CURRENT
-//67. Finishing Chat
+//66. Sending & Receiving Chats (Part 2)
+//67. Finishing Chat - CURRENT
 
 //Section 12: Registration Form Validation
 //68. Improving Registration Form

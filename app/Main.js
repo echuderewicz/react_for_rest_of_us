@@ -25,7 +25,6 @@ import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
 import Search from "./components/Search";
 import Chat from "./components/Chat";
-import { DRAFTABLE } from "immer/dist/internal";
 
 function Main() {
   const initialState = {

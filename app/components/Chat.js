@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import StateContext from "../StateContext";
 
 function Chat() {
+  const appState = useContext(StateContext);
+
   return (
     <div
       id="chat-wrapper"
-      className="chat-wrapper chat-wrapper--is-visible shadow border-top border-left border-right"
+      className={
+        "chat-wrapper  shadow border-top border-left border-right " +
+        (appState.isChatOpen ? "chat-wrapper--is-visible" : "")
+      }
     >
       <div className="chat-title-bar bg-primary">
         Chat

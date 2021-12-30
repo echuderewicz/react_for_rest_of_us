@@ -16,6 +16,14 @@ function Chat() {
     chatMessages: [],
   });
 
+  useEffect(() => {
+    socket.on("chatFromServer", (message) => {
+      setState((draft) => {
+        draft.chatMessages.push(message);
+      });
+    });
+  }, []);
+
   //Making sure to focus the chat field
   useEffect(() => {
     //below will focus the chat input field if the
@@ -26,14 +34,6 @@ function Chat() {
     }
     //looks for changes
   }, [appState.isChatOpen]);
-
-  useEffect(() => {
-    socket.on("chatFromServer", (message) => {
-      setState((draft) => {
-        draft.chatMessages.push(message);
-      });
-    });
-  }, []);
 
   function handleFieldChange(e) {
     //state updated with every change to field
@@ -104,17 +104,14 @@ function Chat() {
           return (
             <div className="chat-other">
               <a href="#">
-                <img
-                  className="avatar-tiny"
-                  src="https://gravatar.com/avatar/b9216295c1e3931655bae6574ac0e4c2?s=128"
-                />
+                <img className="avatar-tiny" src={message.avatar} />
               </a>
               <div className="chat-message">
                 <div className="chat-message-inner">
                   <a href="#">
-                    <strong>barksalot:</strong>
+                    <strong>{message.username}</strong>
                   </a>
-                  Hey, I am good, how about you?
+                  {message.message}
                 </div>
               </div>
             </div>

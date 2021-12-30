@@ -13,13 +13,17 @@ function Chat() {
   });
 
   useEffect(() => {
+    //below will focus the chat input field if the
+    //chat is already open
     if (appState.isChatOpen) {
       chatField.current.focus();
     } else {
     }
+    //looks for changes
   }, [appState.isChatOpen]);
 
   function handleFieldChange(e) {
+    //state updated with every change to field
     const value = e.target.value;
     setState((draft) => {
       draft.fieldValue = value;
@@ -36,6 +40,7 @@ function Chat() {
         username: appState.user.username,
         avatar: appState.user.avatar,
       });
+      //empties out
       draft.fieldValue = "";
     });
   }
@@ -61,6 +66,8 @@ function Chat() {
       </div>
       <div id="chat" className="chat-log">
         {state.chatMessages.map((message, index) => {
+          // if the message is from the current user
+          // return the below jsx
           if (message.username == appState.user.username) {
             return (
               <div className="chat-self">
@@ -71,6 +78,9 @@ function Chat() {
               </div>
             );
           }
+
+          // if the message is from another a different
+          // user than return this jsx below
 
           return (
             <div className="chat-other">

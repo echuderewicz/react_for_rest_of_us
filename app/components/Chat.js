@@ -2,6 +2,10 @@ import React, { useEffect, useContext, useRef } from "react";
 import StateContext from "../StateContext";
 import DispatchContext from "../DispatchContext";
 import { useImmer } from "use-immer";
+import { io } from "socket.io-client";
+//this below will establish an ongoing connection
+//with the backend server and the browser
+const socket = io("http://localhost:8080");
 
 function Chat() {
   const chatField = useRef(null);
@@ -12,6 +16,7 @@ function Chat() {
     chatMessages: [],
   });
 
+  //Making sure to focus the chat field
   useEffect(() => {
     //below will focus the chat input field if the
     //chat is already open
@@ -22,8 +27,17 @@ function Chat() {
     //looks for changes
   }, [appState.isChatOpen]);
 
+  useEffect(() => {
+    socket.on("chatFromServer", (message) => {
+      setState((draft) => {
+        draft.chatMessages.push(message);
+      });
+    });
+  }, []);
+
   function handleFieldChange(e) {
     //state updated with every change to field
+    //console.log(e.target.value);
     const value = e.target.value;
     setState((draft) => {
       draft.fieldValue = value;
@@ -33,6 +47,11 @@ function Chat() {
   function handleSubmit(e) {
     e.preventDefault();
     //Send message to chat server
+    console.log(state.fieldValue);
+    socket.emit("chatFromBrowser", {
+      message: state.fieldValue,
+      token: appState.user.token,
+    });
     setState((draft) => {
       // Add message to state collection of messages
       draft.chatMessages.push({

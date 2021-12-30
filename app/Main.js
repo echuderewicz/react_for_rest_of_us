@@ -192,8 +192,8 @@ function Main() {
 //63. Homepage Post Feed
 
 //Section 11: Building a Live Chat Feature
-//64. Live Chat User Interface  - CURRENT
-//65. Sending & Receiving Chats (Part 1)
+//64. Live Chat User Interface
+//65. Sending & Receiving Chats (Part 1) - CURRENT
 //66. Sending & Receiving Chats (Part 2)
 //67. Finishing Chat
 

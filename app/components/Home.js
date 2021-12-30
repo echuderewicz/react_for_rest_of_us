@@ -51,6 +51,8 @@ function Home() {
 
   return (
     <Page title="your feed">
+      {/* the below code will run if the feed has been populated */}
+
       {state.feed.length > 0 && (
         <>
           <h2>The Latest from those you follow</h2>
@@ -61,6 +63,9 @@ function Home() {
           </div>
         </>
       )}
+
+      {/* the below generic code will run if the feed is NOT populated  */}
+
       {state.feed.length == 0 && (
         // jsx expression can have only (1) top level element, hence the fragment below <></>
         <>

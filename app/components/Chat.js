@@ -1,11 +1,15 @@
 import React, { useEffect, useContext, useRef } from "react";
 import StateContext from "../StateContext";
 import DispatchContext from "../DispatchContext";
+import { useImmer } from "use-immer";
 
 function Chat() {
   const chatField = useRef(null);
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
+  const [state, setState] = useImmer({
+    fieldValue: "",
+  });
 
   useEffect(() => {
     if (appState.isChatOpen) {
@@ -13,6 +17,20 @@ function Chat() {
     } else {
     }
   }, [appState.isChatOpen]);
+
+  function handleFieldChange(e) {
+    const value = e.target.value;
+    setState((draft) => {
+      draft.fieldValue = value;
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setState((draft) => {
+      draft.fieldValue = "";
+    });
+  }
 
   return (
     <div
@@ -61,8 +79,16 @@ function Chat() {
           </div>
         </div>
       </div>
-      <form id="chatForm" className="chat-form border-top">
+      <form
+        onSubmit={handleSubmit}
+        id="chatForm"
+        className="chat-form border-top"
+      >
         <input
+          // this is now considered a controlled component
+          //when you add the value attribute
+          value={state.fieldValue}
+          onChange={handleFieldChange}
           ref={chatField}
           type="text"
           className="chat-field"

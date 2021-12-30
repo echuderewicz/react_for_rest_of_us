@@ -16,6 +16,10 @@ function Chat() {
     chatMessages: [],
   });
 
+  //this useEffect runs immediately on chat
+  //component render pulling in any message
+  //sent out AFTER any of my apps browser refresh
+
   useEffect(() => {
     socket.on("chatFromServer", (message) => {
       setState((draft) => {
@@ -90,7 +94,7 @@ function Chat() {
           // return the below jsx
           if (message.username == appState.user.username) {
             return (
-              <div index={index} className="chat-self">
+              <div key={index} className="chat-self">
                 <div className="chat-message">
                   <div className="chat-message-inner">{message.message}</div>
                 </div>
@@ -103,7 +107,7 @@ function Chat() {
           // user than return this jsx below
 
           return (
-            <div index={index} className="chat-other">
+            <div key={index} className="chat-other">
               <a href="#">
                 <img className="avatar-tiny" src={message.avatar} />
               </a>

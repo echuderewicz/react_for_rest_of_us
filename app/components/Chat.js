@@ -38,6 +38,7 @@ function Chat() {
   function handleFieldChange(e) {
     //state updated with every change to field
     //console.log(e.target.value);
+    //Brad referred to this as a synthetic event...weird
     const value = e.target.value;
     setState((draft) => {
       draft.fieldValue = value;
@@ -89,7 +90,7 @@ function Chat() {
           // return the below jsx
           if (message.username == appState.user.username) {
             return (
-              <div className="chat-self">
+              <div index={index} className="chat-self">
                 <div className="chat-message">
                   <div className="chat-message-inner">{message.message}</div>
                 </div>
@@ -102,7 +103,7 @@ function Chat() {
           // user than return this jsx below
 
           return (
-            <div className="chat-other">
+            <div index={index} className="chat-other">
               <a href="#">
                 <img className="avatar-tiny" src={message.avatar} />
               </a>

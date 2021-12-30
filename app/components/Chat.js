@@ -98,7 +98,7 @@ function Chat() {
         className="chat-form border-top"
       >
         <input
-          // this is now considered a controlled component
+          // this is now considered a controlled input
           //when you add the value attribute
           value={state.fieldValue}
           onChange={handleFieldChange}

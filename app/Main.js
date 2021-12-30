@@ -24,6 +24,8 @@ import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
 import Search from "./components/Search";
+import Chat from "./components/Chat";
+import { DRAFTABLE } from "immer/dist/internal";
 
 function Main() {
   const initialState = {
@@ -35,6 +37,7 @@ function Main() {
       avatar: localStorage.getItem("complexappAvatar"),
     },
     isSearchOpen: false,
+    isChatOpen: false,
   };
 
   function ourReducer(immerDraft, action) {
@@ -56,6 +59,12 @@ function Main() {
         return;
       case "closeSearch":
         immerDraft.isSearchOpen = false;
+        return;
+      case "toggleChat":
+        immerDraft.isChatOpen = !immerDraft.isChatOpen;
+        return;
+      case "closeChat":
+        immerDraft.isChatOpen = false;
         return;
     }
   }
@@ -133,6 +142,7 @@ function Main() {
           >
             <Search />
           </CSSTransition>
+          <Chat />
           <Footer />
         </BrowserRouter>
       </DispatchContext.Provider>

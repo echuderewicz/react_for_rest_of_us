@@ -36,13 +36,19 @@ function Chat() {
     //chat is already open
     if (appState.isChatOpen) {
       chatField.current.focus();
+      appDispatch({ type: "clearUnreadChatCount" });
     } else {
     }
     //looks for changes
   }, [appState.isChatOpen]);
 
   useEffect(() => {
+    //related to scrolling
     chatLog.current.scrollTop = chatLog.current.scrollHeight;
+    //related to incrementing unread chats
+    if (state.chatMessages.length > 1 && !appState.isChatOpen) {
+      appDispatch({ type: "incrementUnreadChatCount" });
+    }
   }, [state.chatMessages]);
 
   function handleFieldChange(e) {

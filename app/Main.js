@@ -37,6 +37,7 @@ function Main() {
     },
     isSearchOpen: false,
     isChatOpen: false,
+    unreadChatCount: 0,
   };
 
   function ourReducer(immerDraft, action) {
@@ -64,6 +65,12 @@ function Main() {
         return;
       case "closeChat":
         immerDraft.isChatOpen = false;
+        return;
+      case "incrementUnreadChatCount":
+        immerDraft.unreadChatCount++;
+        return;
+      case "clearUnreadChatCount":
+        immerDraft.unreadChatCount = 0;
         return;
     }
   }

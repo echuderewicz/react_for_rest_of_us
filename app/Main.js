@@ -96,6 +96,7 @@ function Main() {
       <DispatchContext.Provider value={dispatch}>
         <BrowserRouter>
           <FlashMessages messages={state.flashMessages} />
+          {/* Header kicks it all off */}
           <Header />
           <Switch>
             {/* the use variable username shows in detructure line in profile */}
@@ -154,6 +155,12 @@ function Main() {
       </DispatchContext.Provider>
     </StateContext.Provider>
   );
+}
+
+ReactDOM.render(<Main />, document.querySelector("#app"));
+
+if (module.hot) {
+  module.hot.accept();
 }
 
 //Udemy React For The Rest Of Us - Sections
@@ -227,9 +234,3 @@ function Main() {
 //83.
 //84.
 //85.
-
-ReactDOM.render(<Main />, document.querySelector("#app"));
-
-if (module.hot) {
-  module.hot.accept();
-}

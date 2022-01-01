@@ -22,6 +22,7 @@ function HomeGuest() {
       );
     }
   }
+
   return (
     <Page title={"Welcome!"} wide={true}>
       <div className="row align-items-center">

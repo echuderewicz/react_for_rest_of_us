@@ -126,7 +126,7 @@ function HomeGuest() {
 
       return () => ourRequest.cancel();
     }
-  }, [state.requestCount]);
+  }, [state.username.checkCount]);
 
   function handleSubmit(e) {
     e.preventDefault();

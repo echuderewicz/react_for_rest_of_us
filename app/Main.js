@@ -166,6 +166,7 @@ if (module.hot) {
 //Udemy React For The Rest Of Us - Sections
 
 //Let's start building our first app
+
 //Routing (Single Page Applications)
 //20. Create a Reusable "Container" Component
 //21. Quick Details & Composition
@@ -220,17 +221,17 @@ if (module.hot) {
 //73. Proactively Check If Token Has Expired
 
 //Section 13: Getting Ready To Go Live
-//74.
-//75.
-//76.
-//77.
-//78.
-//79.
-//80.
-//81.
+//74. React Suspense - Lazy Loading (part 1)
+//75. React Suspense - Lazy Loading (part 2)
+//76. Note About Suspense for Data fetching
+//77. Building a "Dist" Copy of Our Site
+//78. React Outside of the Browser (Part 1)
+//79. React Outside of the Browser (Part 2)
+//80. Pushing Our API Backend Server Up To The Web
+//81. Pushing Our react Front-End Up To The Web
 
 //Section 14: Extra Credit Ideas/Challenges
-//82.
-//83.
-//84.
-//85.
+//82. Welcome To The Extra Credit Section
+//83. Profile Not Found Situation
+//84. Login Form: Highlight Empty Fields With Red Border
+//85. Allow For Other Color of Flash Messages (Not Only Green)

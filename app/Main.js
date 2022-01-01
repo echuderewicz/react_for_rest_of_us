@@ -209,11 +209,11 @@ if (module.hot) {
 //64. Live Chat User Interface
 //65. Sending & Receiving Chats (Part 1)
 //66. Sending & Receiving Chats (Part 2)
-//67. Finishing Chat - CURRENT
+//67. Finishing Chat
 
 //Section 12: Registration Form Validation
 //68. Improving Registration Form
-//69. Finishing Registration Form (Part 1)
+//69. Finishing Registration Form (Part 1)  - CURRENT
 //70. Quick Note About If Statement
 //71. Finishing Registration Form (Part 2)
 //72. Quick Flash Message Details

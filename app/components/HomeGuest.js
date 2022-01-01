@@ -96,6 +96,38 @@ function HomeGuest() {
     }
   }, [state.username.value]);
 
+  useEffect(() => {
+    if (state.requestCount) {
+      //cancel token to cancel axios request
+      //if this component unmounts in the middle of the request
+      const ourRequest = Axios.CancelToken.source();
+      async function fetchResults() {
+        try {
+          const response = await Axios.post(
+            "/search",
+            {
+              searchTerm: state.searchTerm,
+            },
+            { cancelToken: ourRequest.token }
+          );
+          setstate((draft) => {
+            draft.results = response.data;
+            //this will cause the fetched results to display
+            //and the spinning loader icon will hide
+            draft.show = "results";
+            console.log(response.data);
+          });
+        } catch (e) {
+          console.log("there was a problem or the request was canceled");
+        }
+      }
+
+      fetchResults();
+
+      return () => ourRequest.cancel();
+    }
+  }, [state.requestCount]);
+
   function handleSubmit(e) {
     e.preventDefault();
   }

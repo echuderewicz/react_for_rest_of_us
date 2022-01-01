@@ -13,6 +13,8 @@ function Chat() {
   const chatLog = useRef(null);
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
+
+  //some local, component centric state management
   const [state, setState] = useImmer({
     fieldValue: "",
     chatMessages: [],

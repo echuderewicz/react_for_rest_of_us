@@ -63,6 +63,13 @@ function HomeGuest() {
         }
         return;
       case "usernameUniqueResults":
+        if (action.value) {
+          draft.username.hasErrors = true;
+          draft.username.isUnique = false;
+          draft.username.message = "That username has already been taken";
+        } else {
+          draft.username.isUnique = true;
+        }
         return;
       case "emailImmediately":
         draft.email.hasErrors = false;
@@ -97,26 +104,20 @@ function HomeGuest() {
   }, [state.username.value]);
 
   useEffect(() => {
-    if (state.requestCount) {
+    if (state.username.checkCount) {
       //cancel token to cancel axios request
       //if this component unmounts in the middle of the request
       const ourRequest = Axios.CancelToken.source();
       async function fetchResults() {
         try {
           const response = await Axios.post(
-            "/search",
+            "/doesUsernameExist",
             {
-              searchTerm: state.searchTerm,
+              username: state.username.value,
             },
             { cancelToken: ourRequest.token }
           );
-          setstate((draft) => {
-            draft.results = response.data;
-            //this will cause the fetched results to display
-            //and the spinning loader icon will hide
-            draft.show = "results";
-            console.log(response.data);
-          });
+          dispatch({ type: "usernameUniqueResults", value: response.data });
         } catch (e) {
           console.log("there was a problem or the request was canceled");
         }

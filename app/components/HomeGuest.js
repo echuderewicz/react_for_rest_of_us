@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Page from "./Page";
 import Axios from "axios";
 import { useImmerReducer } from "use-immer";
@@ -48,6 +48,10 @@ function HomeGuest() {
         return;
 
       case "usernameAfterDelay":
+        if (draft.username.value.length < 3) {
+          draft.username.hasErrors = true;
+          draft.username.message = "username must be at least 3 characters";
+        }
         return;
       case "usernameUniqueResults":
         return;
@@ -71,6 +75,17 @@ function HomeGuest() {
   }
 
   const [state, dispatch] = useImmerReducer(ourReducer, initialState);
+
+  useEffect(() => {
+    if (state.username.value) {
+      const delay = setTimeout(
+        () => dispatch({ type: "usernameAfterDelay" }),
+        800
+      );
+      //clean up function
+      return () => clearTimeout(delay);
+    }
+  }, [state.username.value]);
 
   function handleSubmit(e) {
     e.preventDefault();

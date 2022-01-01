@@ -37,6 +37,14 @@ function HomeGuest() {
           draft.username.hasErrors = true;
           draft.username.message = "Username cannot exceed 30 characters";
         }
+        if (
+          draft.username.value &&
+          !/^([a-zA-Z0-9]+)$/.test(draft.username.value)
+        ) {
+          draft.username.hasErrors = true;
+          draft.username.message =
+            "Username can only contain letters and numbers";
+        }
         return;
 
       case "usernameAfterDelay":

@@ -52,6 +52,15 @@ function HomeGuest() {
           draft.username.hasErrors = true;
           draft.username.message = "username must be at least 3 characters";
         }
+        //checking if the username is unique
+        //if there are no existing errors
+        //increment the check count that will
+        //trigger an Axios request
+        if (!draft.hasErrors) {
+          //we will setup a useEffect that
+          //will watch this piece of state for changes
+          draft.username.checkCount++;
+        }
         return;
       case "usernameUniqueResults":
         return;

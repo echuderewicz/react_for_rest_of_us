@@ -3,24 +3,8 @@ import Page from "./Page";
 import Axios from "axios";
 
 function HomeGuest() {
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const response = await Axios.post("/register", {
-        username,
-        email,
-        password,
-      });
-      console.log(`${response.data.username} was successfully created`);
-    } catch (e) {
-      console.log(
-        "there was an error...you might not have entered in a long enough password"
-      );
-    }
   }
 
   return (

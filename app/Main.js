@@ -91,6 +91,40 @@ function Main() {
     //keep in mind that the below value: state.loggedIn must be in an array
   }, [state.loggedIn]);
 
+  //check if token has expired or not on first render
+
+  useEffect(() => {
+    if (state.loggedIn) {
+      //cancel token to cancel axios request
+      //if this component unmounts in the middle of the request
+      const ourRequest = Axios.CancelToken.source();
+      async function fetchResults() {
+        try {
+          const response = await Axios.post(
+            "/checkToken",
+            {
+              token: state.user.token,
+            },
+            { cancelToken: ourRequest.token }
+          );
+          if (!response.data) {
+            dispatch({ type: "logout" });
+            dispatch({
+              type: "flashmessage",
+              value: "Your session has expired. Please log in again",
+            });
+          }
+        } catch (e) {
+          console.log("there was a problem or the request was canceled");
+        }
+      }
+
+      fetchResults();
+
+      return () => ourRequest.cancel();
+    }
+  }, []);
+
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>

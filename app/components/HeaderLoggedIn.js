@@ -7,13 +7,20 @@ import StateContext from "../StateContext";
 function HeaderLoggedIn(props) {
   const appDispatch = useContext(DispatchContext);
   const appState = useContext(StateContext);
+
   function handleLogout() {
     appDispatch({ type: "logout" });
+    appDispatch({
+      type: "flashmessage",
+      value: "you have successfully logged out",
+    });
   }
+
   function handleSearchIcon(e) {
     e.preventDefault();
     appDispatch({ type: "openSearch" });
   }
+
   return (
     <div className="flex-row my-3 my-md-0">
       <a

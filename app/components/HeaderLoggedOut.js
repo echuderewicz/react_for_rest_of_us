@@ -21,8 +21,16 @@ function HeaderLoggedOut(props) {
         //logging just as a test
         console.log(response.data);
         appDispatch({ type: "login", data: response.data });
+        appDispatch({
+          type: "flashmessage",
+          value: "you have successfully logged in",
+        });
       } else {
         console.log("improper username/password");
+        appDispatch({
+          type: "flashmessage",
+          value: "invalid username/password",
+        });
       }
     } catch (e) {
       console.log("There was a serious problem");

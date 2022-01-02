@@ -216,8 +216,8 @@ if (module.hot) {
 //68. Improving Registration Form
 //69. Finishing Registration Form (Part 1)
 //70. Quick Note About If Statement
-//71. Finishing Registration Form (Part 2)  - CURRENT
-//72. Quick Flash Message Details
+//71. Finishing Registration Form (Part 2)
+//72. Quick Flash Message Details - CURRENT
 //73. Proactively Check If Token Has Expired
 
 //Section 13: Getting Ready To Go Live

@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import { io } from "socket.io-client";
 //this below will establish an ongoing connection
 //with the backend server and the browser
-const socket = io("http://localhost:8080");
 
 function Chat() {
+  const socket = useRef(null);
   const chatField = useRef(null);
   const chatLog = useRef(null);
   const appState = useContext(StateContext);
@@ -25,11 +25,13 @@ function Chat() {
   //sent out AFTER any of my apps browser refresh
 
   useEffect(() => {
-    socket.on("chatFromServer", (message) => {
+    socket.current = io("http://localhost:8080");
+    socket.current.on("chatFromServer", (message) => {
       setState((draft) => {
         draft.chatMessages.push(message);
       });
     });
+    return () => socket.current.disconnect();
   }, []);
 
   //Making sure to focus the chat field
@@ -67,7 +69,7 @@ function Chat() {
     e.preventDefault();
     //Send message to chat server
     console.log(state.fieldValue);
-    socket.emit("chatFromBrowser", {
+    socket.current.emit("chatFromBrowser", {
       message: state.fieldValue,
       token: appState.user.token,
     });

@@ -20,8 +20,8 @@ import Home from "./components/Home";
 //import CreatePost from "./components/CreatePost";
 //the below really just contains a promise
 const CreatePost = React.lazy(() => import("./components/CreatePost"));
+const ViewSinglePost = React.lazy(() => import("./components/ViewSinglePost"));
 
-import ViewSinglePost from "./components/ViewSinglePost";
 import FlashMessages from "./components/FlashMessages";
 import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
@@ -261,8 +261,8 @@ if (module.hot) {
 //73. Proactively Check If Token Has Expired
 
 //Section 13: Getting Ready To Go Live
-//74. React Suspense - Lazy Loading (part 1) - CURRENT
-//75. React Suspense - Lazy Loading (part 2)
+//74. React Suspense - Lazy Loading (part 1)
+//75. React Suspense - Lazy Loading (part 2) - CURRENT
 //76. Note About Suspense for Data fetching
 //77. Building a "Dist" Copy of Our Site
 //78. React Outside of the Browser (Part 1)

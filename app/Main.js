@@ -268,9 +268,9 @@ if (module.hot) {
 
 //Section 13: Getting Ready To Go Live
 //74. React Suspense - Lazy Loading (part 1)
-//75. React Suspense - Lazy Loading (part 2) - CURRENT
+//75. React Suspense - Lazy Loading (part 2)
 //76. Note About Suspense for Data fetching
-//77. Building a "Dist" Copy of Our Site
+//77. Building a "Dist" Copy of Our Site  - CURRENT
 //78. React Outside of the Browser (Part 1)
 //79. React Outside of the Browser (Part 2)
 //80. Pushing Our API Backend Server Up To The Web

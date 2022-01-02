@@ -217,8 +217,8 @@ if (module.hot) {
 //69. Finishing Registration Form (Part 1)
 //70. Quick Note About If Statement
 //71. Finishing Registration Form (Part 2)
-//72. Quick Flash Message Details - CURRENT
-//73. Proactively Check If Token Has Expired
+//72. Quick Flash Message Details
+//73. Proactively Check If Token Has Expired  - CURRENT
 
 //Section 13: Getting Ready To Go Live
 //74. React Suspense - Lazy Loading (part 1)

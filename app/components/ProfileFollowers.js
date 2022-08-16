@@ -19,6 +19,7 @@ function ProfileFollowers() {
         setPosts(response.data);
         setIsLoading(false);
       } catch (e) {
+        console.log(e);
         console.log("problem generated in catch: ProfileFollowers.js");
       }
     }

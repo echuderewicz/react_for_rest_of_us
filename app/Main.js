@@ -138,7 +138,7 @@ function Main() {
           <FlashMessages messages={state.flashMessages} />
           {/* Header kicks it all off */}
           <Header />
-          <Suspense fallback={"nut"}>
+          <Suspense fallback={""}>
             <Switch>
               {/* the use variable username shows in detructure line in profile */}
               <Route path="/profile/:username">

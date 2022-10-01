@@ -155,6 +155,9 @@ function Main() {
                 <CreatePost />
               </Route>
 
+              {/* Below is how you NOW form these routes */}
+              {/* <Route path="/create-post" element={<CreatePost />}/> */}
+
               {/* display individual post just created */}
               <Route path="/post/:id" exact>
                 <ViewSinglePost />
